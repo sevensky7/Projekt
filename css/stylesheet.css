@@ -1,0 +1,25 @@
+body{
+width: 800px;
+height:480px;
+}
+
+.container{
+width:99%;
+height:99%;
+}
+
+.button_newgame{
+width:231px;
+height:109px;
+top:70%;
+left:70%;
+background:url(img/button_newgame.png) 0px 0px no-repeat;
+}
+
+.button_back{
+width:231px;
+height:109px;
+top:74%;
+left:74%;
+background:url(img/button_back.png) 0px 0px no-repeat;
+}

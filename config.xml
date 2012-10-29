@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.phonegap.example"
+        versionCode="10" 
+        version   = "1.0.0">
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>No Candy For My Zombie</name>
+
+    <description>The most awesome game ever</description>
+
+    <author href="http://pgalor.com" email="wro@g.pl">Piotr Galor</author>
+	
+	 <preference name="orientation" value="landscape" />
+
+</widget>

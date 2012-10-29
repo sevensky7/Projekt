@@ -8,12 +8,11 @@
     <!-- versionCode is optional and Android only -->
 
     <name>No Candy For My Zombie</name>
-
+	<preference name="orientation" value="landscape" />
     <description>The most awesome game ever</description>
 
     <author href="http://pgalor.com" email="wro@g.pl">Piotr Galor</author>
-	
-	<preference name="orientation" value="landscape" />
+
 	
 	<gap:splash src="img/splash.jpg" gap:platform="winphone" />
 	<icon src="img/icon.png" gap:platform="winphone" />

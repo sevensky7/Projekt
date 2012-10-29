@@ -39,3 +39,5 @@ background:url(../img/button_back.png) 0px 0px no-repeat;
 opacity:0.8;
 filter:alpha(opacity=80);
 }
+
+.ui-page { -webkit-backface-visibility: hidden; } 

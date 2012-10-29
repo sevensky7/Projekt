@@ -1,4 +1,4 @@
-body{
+﻿body{
 width: 800px;
 height:480px;
 }
@@ -41,3 +41,7 @@ filter:alpha(opacity=80);
 }
 
 .ui-page { -webkit-backface-visibility: hidden; }
+
+#gamescreen{
+display:none;
+}

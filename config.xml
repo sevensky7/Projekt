@@ -13,6 +13,10 @@
 
     <author href="http://pgalor.com" email="wro@g.pl">Piotr Galor</author>
 	
-	 <preference name="orientation" value="landscape" />
+	<preference name="orientation" value="landscape" />
+	
+	<gap:splash src="img/splash.jpg" gap:platform="winphone" />
+	<icon src="img/icon.png" gap:platform="winphone" />
+	<icon src="img/tileicon.png" gap:platform="winphone" gap:role="background" />
 
 </widget>

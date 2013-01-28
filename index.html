@@ -1,26 +1,73 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
     <head>
-        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=800, height=480, target-densitydpi=device-dpi" />
         <title>No Candy For My Zombie</title>
-		<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
-		<link rel="stylesheet" href="js/jquery.mobile-1.2.0.min.css" />
-		<script src="js/jquery.mobile-1.2.0.min.js"></script>
+        <link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
+        <link rel="stylesheet" href="css/stylesheet.css"/>
+        <script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.2.0.min.js"></script>
+		<script type="text/javascript" src="js/box2d-web-2.1.a.3.js"></script>
+		<script type="text/javascript" src="js/jcanvas.min.js"></script>
+		
+        
+        
+      
+    
     </head>
     <body>
-	<div class="container" data-role="page">
-	<div class="logotype"></div>
-	
-	<div class="menu">
-        <h1>No Candy For My Zombie - new game screen.</h1>
-        <p>
-            Sup Hommies?
-			
-			Welcome to the game. 
-        </p>
-	</div>
-	
-	<div class="button_newgame" data-role="button" onclick="window.location = 'http://google.com';">Page 2</div>
-	</div>
+
+      <div data-role="page" id="home" class="welcome_screen">
+     
+        <!--Welcome Screen-->
+        <div data-role="content" class="buttons_welcome_screen">
+
+          <!--About Button-->
+          <a href="#newgame" data-role="button" data-transition="fade">
+            <div class="button_newgame"></div>
+          </a>
+          
+          <!--New Game Button-->
+          <a href="#about" data-role="button" data-transition="fade">
+            <div class="button_about"></div>
+          </a>
+
+
+        </div>
+      </div>
+
+      <!--About Screen-->
+      <div data-role="page" id="about" class="about_screen">
+        
+        <div data-role="content">
+
+          <!--Back Button-->
+          <a href="#home" data-rel="back" data-role="button" data-transition="fade">
+            <div class="button_back"></div>
+          </a>
+          
+        </div>
+      </div>
+
+      
+      <!--Main Gameplay Screen-->
+      <div data-role="page" id="newgame">
+
+        <div data-role="content">
+			<div class="canvas_wrapper">
+				<canvas id="canvas" width="800px" height="480px">Not supported.</canvas>    
+				<script type="text/javascript" src="js/demo-1.js"></script>
+				<div class="overlay">
+					<a href="#home" data-rel="back" data-role="button" data-transition="fade">
+						<div class="button_back"></div>
+					</a>
+				</div>
+			</div>
+		</div>
+      </div>
+
+
     </body>
 </html>

@@ -1,6 +1,6 @@
 ﻿body{
-width:800px;
-height:480px;
+width:100%;
+height:100%;
 background-color:#e0e0e0;
 overflow-y: scroll;
 overflow-x: hidden;
@@ -8,9 +8,6 @@ border: 0 none;
 position:relative;
 
 }
-
-
-
 
 a{
 border: 0 none;

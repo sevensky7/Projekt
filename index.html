@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=800, height=480, target-densitydpi=device-dpi" />
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
         <title>No Candy For My Zombie</title>
         <link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
         <link rel="stylesheet" href="css/stylesheet.css"/>
@@ -11,6 +11,16 @@
         <script type="text/javascript" src="js/jquery.mobile-1.2.0.min.js"></script>
 		<script type="text/javascript" src="js/box2d-web-2.1.a.3.js"></script>
 		<script type="text/javascript" src="js/jcanvas.min.js"></script>
+		<script type="text/javascript">
+      window.addEventListener("resize", OnResizeCalled, false);
+
+      function OnResizeCalled() {
+      canvas.style.width = window.innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
+      }
+
+      document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
+    </script>
 		
         
         
@@ -21,7 +31,7 @@
 
       <div data-role="page" id="home" class="welcome_screen">
      
-        <!--Welcome Screen-->
+         <!--Welcome Screen-->
         <div data-role="content" class="buttons_welcome_screen">
 
           <!--About Button-->

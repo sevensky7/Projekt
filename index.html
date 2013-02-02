@@ -3,7 +3,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="format-detection" content="telephone=no" />
-      <meta name="viewport" content="width=device-width, maximum-scale=0.5" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="viewport" content="width=device-width, height=device-height, target-densityDpi=device-dpi, user-scalable=no"/> 
+	
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <title>No Candy For My Zombie</title>
@@ -13,8 +15,35 @@
         <script type="text/javascript" src="js/jquery.mobile-1.2.0.min.js"></script>
 		<script type="text/javascript" src="js/box2d-web-2.1.a.3.js"></script>
 		<script type="text/javascript" src="js/jcanvas.min.js"></script>
+		<script type="text/javascript" src="js/fabric.0.9.15.min.js"></script>
+		
+		
 		<script type="text/javascript">
+		
+		
+	
+	
 
+
+	function preventBehavior(e) {
+    e.preventDefault(); 
+	};
+
+	document.addEventListener("touchmove", preventBehavior, false);
+	document.addEventListener("touchstart", preventBehavior, false);
+	document.addEventListener("touchend", preventBehavior, false);
+	document.addEventListener("mousedown", mouseClickEvent, false);
+	document.addEventListener("mouseup", mouseClickEvent, false);
+	document.addEventListener("mousemove", mouseClickEvent, false);
+	
+	
+	function onStart ( touchEvent ) {
+		if( navigator.userAgent.match(/Android/i) ) {   // if you already work on Android system, you can        skip this step
+		touchEvent.preventDefault();     //THIS IS THE KEY. You can read the difficult doc released by W3C to learn more.
+	}};
+	
+
+});
     </script>
 		
         
@@ -22,9 +51,9 @@
       
     
     </head>
-    <body>
+    <body onLoad="init()">
 
-      <div data-role="page" id="home" class="welcome_screen">
+      <div data-role="page" id="home" class="welcome_screen" >
      
          <!--Welcome Screen-->
         <div data-role="content" class="buttons_welcome_screen">

@@ -25,7 +25,15 @@
 
 	$(document).ready(function() {
 
+	function preventBehavior(e) {
+    e.preventDefault(); 
+	};
 
+	document.addEventListener("touchmove", preventBehavior, false);
+	document.addEventListener("mousemove", preventBehavior, false);
+	
+
+	
 	/*
 	setTimeout(function (){
 		var w1 = $(window).width();

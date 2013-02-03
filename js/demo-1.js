@@ -156,6 +156,34 @@
 				   mouseX = undefined;
 				   mouseY = undefined;
 				}, true);
+				
+	
+				document.addEventListener("touchstart", function(event) {
+					isMouseDown = true;
+					var touch = event.touches[0];
+					mouseX = (touch.pageX - canvasPosition.x) / 30;
+					mouseY = (touch.pageY - canvasPosition.y) / 30;
+					//alert("Touch x:" + touch.pageX + ", y:" + touch.pageY + ',len='+event.touches.length);
+				}, false);
+
+				document.addEventListener("touchend", function(event) {
+					isMouseDown = false;
+					mouseX = undefined;
+					mouseY = undefined;
+					//alert('Tend' + event.touches.length);			
+				}, false);
+
+
+
+				document.addEventListener("touchmove", function(event) {
+					event.preventDefault();
+					var touch = event.touches[0];
+					mouseX = (touch.pageX - canvasPosition.x) / 30;
+					mouseY = (touch.pageY - canvasPosition.y) / 30;
+					//alert("MOve - Touch x:" + touch.pageX + ", y:" + touch.pageY);
+				}, false);
+
+				
 				 
 				function handleMouseMove(e) {
 				   mouseX = (e.clientX - canvasPosition.x) / 30;

@@ -25,7 +25,13 @@
 
 	$(document).ready(function() {
 
+	function preventBehavior(e) {
+    e.preventDefault(); 
+	};
 
+	document.addEventListener("touchmove", preventBehavior, false);
+	document.addEventListener("mousemove", preventBehavior, false);
+	
 	
 	function onStart ( touchEvent ) {
 		if( navigator.userAgent.match(/Android/i) ) {   // if you already work on Android system, you can        skip this step

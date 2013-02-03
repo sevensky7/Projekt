@@ -17,6 +17,7 @@
 		<script type="text/javascript" src="js/box2d-web-2.1.a.3.js"></script>
 		<script type="text/javascript" src="js/jcanvas.min.js"></script>
 		<script type="text/javascript" src="js/fabric.0.9.15.min.js"></script>
+		<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
 		
 		
 		<script type="text/javascript">
@@ -28,7 +29,7 @@
 	};
  
 	document.addEventListener("touchmove", preventBehavior, false);
-//document.addEventListener("mousemove", mouseClickEvent, false);
+	document.addEventListener("mousemove", mouseClickEvent, false);
 	
 	
 	
@@ -50,18 +51,48 @@
 	},250);
 	*/
 
-});
+	
+	
+pause: function () {
+		  $('#button_music_on').click(function () {
+				$("#jquery_jplayer").jPlayer('play');
+		  })
+		},
+		play: function () {
+		$('#button_music_on').click(function () {
+				$("#jquery_jplayer").jPlayer('pause');
+		})}
 
 
     </script>
 		
-        
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $("#jquery_jplayer").jPlayer({
+        ready: function() {
+          $(this).jPlayer("setMedia", {
+            mp3: "audio/DST-Crow.mp3"
+          }).jPlayer("play");
+          var click = document.ontouchstart === undefined ? 'click' : 'touchstart';
+          var kickoff = function () {
+            $("#jquery_jplayer").jPlayer("play");
+            document.documentElement.removeEventListener(click, kickoff, true);
+          };
+          document.documentElement.addEventListener(click, kickoff, true);
+        },
+	
+        loop: true,
+        swfPath: "/js"
+      });
+    });
+  </script>  
         
       
     
     </head>
     <body>
-
+	<div id="jquery_jplayer" class="jp-jplayer"></div>
+	
       <div data-role="page" id="home" class="welcome_screen" >
      
          <!--Welcome Screen-->
@@ -86,9 +117,36 @@
         
         <div data-role="content">
 
-          <!--Back Button-->
-          <a href="#home" data-rel="back" data-role="button" data-transition="fade">
-            <div class="button_back"></div>
+		
+		  <!--Overlay 'Choose your zombie'-->
+            <div class="overlay_zombie"></div>
+      
+		  <!--Actual zombies-->
+			<div id="zombie"></div>
+		
+	      <!--Left Button-->
+          <a href="#toggle" data-role="button" data-transition="fade">
+            <div class="button_left"></div>
+          </a>
+		  
+		  <!--Right Button-->
+          <a href="#toggle" data-role="button" data-transition="fade">
+            <div class="button_right"></div>
+          </a>
+		
+		  <!--Music On/Off Button-->
+		  <div id="button_music_container">
+            <div id="button_music_on" onClick="$('#jquery_jplayer').jPlayer('play');$(this).css('background-image', 'url(img/button_music_on.png)');$('#button_music_off').css('background-image', 'url(img/gray_off.png)');"></div>
+			<div id="button_music_off" onClick="$('#jquery_jplayer').jPlayer('pause');$(this).css('background-image', 'url(img/button_music_off.png)');$('#button_music_on').css('background-image', 'url(img/gray_on.png)');"></div>
+			</div>
+          <!--Tutorial Button-->
+          <a href="#tutorial" data-role="button" data-transition="fade">
+            <div class="button_tutorial"></div>
+          </a>
+          
+          <!--Done Button-->
+          <a href="#home" data-role="button" data-transition="fade">
+            <div class="button_done"></div>
           </a>
           
         </div>
@@ -101,12 +159,18 @@
         <div data-role="content">
 			<div class="canvas_wrapper">
 				<canvas id="canvas" width="800px" height="480px">Not supported.</canvas>    
-				<script type="text/javascript" src="js/demo-1.js"></script>
-				<div class="overlay">
-					<a href="#home" data-rel="back" data-role="button" data-transition="fade">
-						<div class="button_back"></div>
-					</a>
-				</div>
+					<script type="text/javascript" src="js/demo-1.js"></script>
+					
+					
+					
+					<div class="overlay">
+					<div class="overlay_begin" onClick="$(this).toggle();"></div>
+						<a href="#home" data-role="button" data-transition="fade">
+							<div class="button_back"></div>
+						</a>
+							<div class="button_pause" onClick="$('.overlay_begin').toggle();"></div>
+					</div>
+				
 			</div>
 		</div>
       </div>

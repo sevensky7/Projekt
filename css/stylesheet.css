@@ -25,7 +25,6 @@ background-image:url('../img/background.jpg') !important;
 background-repeat:no-repeat;
 position:relative;
 border:0;
-background-size: cover;
 }
 
 .about_screen{
@@ -33,7 +32,6 @@ background-image:url('../img/background_about.jpg') !important;
 background-repeat:no-repeat;
 position:relative;
 border:0;
-background-size: cover;
 }
 
 
@@ -110,10 +108,6 @@ transform:rotate(7deg);
 
 canvas{
 background-image:url('../img/gameplay_screen.jpg') !important;
-
-    width: 100%;
-    height: 100%;
-
 }
 
 .canvas_wrapper{

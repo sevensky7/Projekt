@@ -31,6 +31,17 @@
 	document.addEventListener("mousemove", mouseClickEvent, false);
 	
 	
+	var can = document.getElementById('canvas');
+	var ctx = can.getContext('2d');
+
+
+	can.addEventListener( 'touchstart', onTouchStart, false);
+
+	function onTouchStart(e) {
+	 ctx.fillRect(0,0,300,300);   
+		
+	}
+	
 	function onStart ( touchEvent ) {
 		if( navigator.userAgent.match(/Android/i) ) {   // if you already work on Android system, you can        skip this step
 		touchEvent.preventDefault();     //THIS IS THE KEY. You can read the difficult doc released by W3C to learn more.

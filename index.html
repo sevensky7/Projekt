@@ -25,19 +25,7 @@
 
 	$(document).ready(function() {
 
-	function preventBehavior(e) {
-    e.preventDefault(); 
-	};
 
-	document.addEventListener("touchmove", preventBehavior, false);
-	document.addEventListener("mousemove", mouseClickEvent, false);
-	
-	
-	function onStart ( touchEvent ) {
-		if( navigator.userAgent.match(/Android/i) ) {   // if you already work on Android system, you can        skip this step
-		touchEvent.preventDefault();     //THIS IS THE KEY. You can read the difficult doc released by W3C to learn more.
-	}};
-	
 	/*
 	setTimeout(function (){
 		var w1 = $(window).width();

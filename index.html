@@ -28,9 +28,9 @@
 	function preventBehavior(e) {
     e.preventDefault(); 
 	};
-
+ 
 	document.addEventListener("touchmove", preventBehavior, false);
-	document.addEventListener("mousemove", preventBehavior, false);
+	document.addEventListener("mousemove", mouseClickEvent, false);
 	
 	
 	function onStart ( touchEvent ) {

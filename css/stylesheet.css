@@ -40,7 +40,6 @@ background-image:url('../img/button_newgame.png');
 visibility:visible;
 width:200px;
 height:94px;
-margin-top:30%;
 margin-left:60%;
 position:relative;
 border:0;
@@ -304,14 +303,20 @@ width:100%;
 height:100%;
 }
  
+#logotype_container{
+position:relative;
+width:382px;
+height:221px;
+margin-left:23%;
+margin-top:1%;
+}
  
 .logotype{
 background-image:url('../img/logotype.png');
 width:382px;
 height:221px;
 position:absolute;
-margin-left:23%;
-margin-top:1%;
+
 
 -webkit-animation-name: logotype;
 -webkit-animation-duration: 6s;

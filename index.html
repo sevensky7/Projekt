@@ -18,7 +18,6 @@
 		<script type="text/javascript" src="js/jcanvas.min.js"></script>
 		<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
 		<script type="text/javascript" src="js/sprite.js"></script>
-		<script type="text/javascript" src="js/sound.js"></script>
 		
 	
 	
@@ -77,10 +76,10 @@
       <div data-role="page" id="home" class="welcome_screen" >
 	  <!--Actual zombies-->
 			<div id="zombie"></div>
-		<div class="logotype"></div>
+		
          <!--Welcome Screen-->
-        <div data-role="content" class="buttons_welcome_screen">
-
+        <div data-role="content">
+		<div class="logotype"></div>
           <!--About Button-->
           <a href="#newgame" data-role="button" data-transition="fade">
             <div class="button_newgame"></div>
@@ -105,16 +104,16 @@
             <div class="overlay_zombie"></div>
       
 		  <!--Actual zombies-->
-			<div id="zombie"></div>
+			<div id="zombie_gameplay"></div>
 		
 	      <!--Left Button-->
           <a href="#toggle" data-role="button" data-transition="fade">
-            <div class="button_left"></div>
+            <div class="button_left" onClick="$('#zombie_gameplay').css('background-image', 'url(img/zombie_sprite.png)');"></div>
           </a>
 		  
 		  <!--Right Button-->
           <a href="#toggle" data-role="button" data-transition="fade">
-            <div class="button_right"></div>
+            <div class="button_right" onClick="$('#zombie_gameplay').css('background-image', 'url(img/zombie_sprite_2.png)');"></div>
           </a>
 		
 		  <!--Music On/Off Button-->
@@ -142,7 +141,7 @@
         <div data-role="content">
 			<div class="canvas_wrapper">
 				<canvas id="canvas" width="800px" height="480px">Not supported.</canvas>    
-					<script type="text/javascript" src="js/gameplay.js"></script>
+					
 					
 					
 					
@@ -154,7 +153,7 @@
 						<a href="#home" data-role="button" data-transition="fade">
 							<div class="button_back"></div>
 						</a>
-							<div class="button_pause" onClick="$('.overlay_begin').toggle();"></div>
+							<div id="button_pause"></div>
 					</div>
 					
 					
@@ -165,6 +164,6 @@
      <script type="text/javascript">
         $("body").fixedtoolbar({ tapToggle: false });
     </script>
-
+    <script type="text/javascript" src="js/gameplay.js"></script>
     </body>
 </html>

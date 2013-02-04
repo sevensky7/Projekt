@@ -4,7 +4,8 @@
         var canvas_width = canvasElement.width;
         var canvas_height = canvasElement.height;
        
-		
+		var score = 0;
+		var paused = 0;
 		
 		$(function() {
 		  
@@ -25,13 +26,27 @@
 		  });
 		  
 		});
+		
+		
+		
+		window.onload = function(){
+			document.getElementById('button_pause').on('click', function(){
+				if (paused === 0) { 
+					paused = 1;
+				}
+				
+				else { 
+					 paused = 0;
+				}
+			});
+
+		};
 
 		
-		
-        
+       
 	
-        var player = {
-          color: "#00A",
+        var zombie_mouth = {
+          color: "#8c9f98",
           x: 110,
           y: 210,
           width: 100,
@@ -39,15 +54,18 @@
           draw: function() {
             canvas.fillStyle = this.color;
             canvas.fillRect(this.x, this.y, this.width, this.height);
+			canvas.font = '30px londrina';
+			canvas.fillText(score.toString() , 640, 30);
+			
           }
         };
 
-        var enemies = [];
+        var brains = [];
 		
 		
 
         
-        function Enemy(I) {
+        function Brain(I) {
           I = I || {};
         
           I.active = true;
@@ -56,8 +74,8 @@
           I.color = "#A2B";
         
           I.x = 800;
-          I.y = 140;
-          I.xVelocity = -1;
+          I.y = 170;
+          I.xVelocity = -5;
           I.yVelocity = 0;
         
           I.width = 100;
@@ -78,7 +96,7 @@
             I.x += I.xVelocity;
             I.y += I.yVelocity;
         
-            I.yVelocity = 2 * Math.sin(I.age * Math.PI / 64);
+            I.yVelocity = 1 * Math.sin(I.age * Math.PI / 64);
         
             I.age++;
         
@@ -86,8 +104,7 @@
           };
         
           I.explode = function() {
-            Sound.play("explosion");
-        
+           
             this.active = false;
             // Extra Credit: Add an explosion graphic
           };
@@ -110,33 +127,46 @@
               };
 			})();
 		
-		    (function animloop(){
+		   
+		   
+		   
+	
+	
+		if(paused==0) {
+			(function animloop(){
 				requestAnimFrame(animloop);
 				update();
 				draw();
 			})();
+		}
+	
+		   
+		   
+		   
+
+		   
      
 		
 		
         function update() {
             
-          enemies.forEach(function(enemy) {
-            enemy.update();
+          brains.forEach(function(brain) {
+            brain.update();
           });
         
-          enemies = enemies.filter(function(enemy) {
-            return enemy.active;
+          brains = brains.filter(function(brain) {
+            return brain.active;
           });
         
           handleCollisions();
         
           if(Math.random() < 0.005) {
-            enemies.push(Enemy());
+            brains.push(Brain());
           }
         }
         
         
-        player.midpoint = function() {
+        zombie_mouth.midpoint = function() {
           return {
             x: this.x + this.width/2,
             y: this.y + this.height/2
@@ -145,12 +175,12 @@
         
         function draw() {
           canvas.clearRect(0, 0, canvas_width, canvas_height);
-          player.draw();
+          zombie_mouth.draw();
           
+		  
         
-        
-          enemies.forEach(function(enemy) {
-            enemy.draw();
+          brains.forEach(function(brain) {
+            brain.draw();
           });
         }
         
@@ -163,15 +193,16 @@
         
         function handleCollisions() {   
         
-          enemies.forEach(function(enemy) {
-            if((collides(enemy, player)) && (detect==true) ){
-              enemy.explode();
-              player.explode();
+          brains.forEach(function(brain) {
+            if((collides(brain, zombie_mouth)) && (detect==true) ){
+			  score+=10;
+              brain.explode();
+              zombie_mouth.explode();
             }
           });
         }
         
-        player.explode = function() {
+        zombie_mouth.explode = function() {
           this.active = false;
           // Extra Credit: Add an explosion graphic and then end the game
         };

@@ -91,9 +91,7 @@ filter:alpha(opacity=100);
 .button_tutorial:active,
 .button_tutorial:hover,
 .button_about:active,
-.button_about:hover,
-.button_pause:active,
-.button_pause:hover
+.button_about:hover
 {
 opacity:0.8;
 filter:alpha(opacity=80);
@@ -119,7 +117,7 @@ opacity:1.0;
 filter:alpha(opacity=100);
 }
 
-.button_pause{
+#button_pause{
 background-image:url('../img/button_pause.png');
 visibility:visible;
 width:104px;
@@ -130,6 +128,18 @@ position:relative;
 border:0;
 opacity:1.0;
 filter:alpha(opacity=100);
+}
+
+#button_pause:active,
+#button_pause:hover
+{
+opacity:0.8;
+filter:alpha(opacity=80);
+transform:rotate(7deg);
+-ms-transform:rotate(7deg); /* IE 9 */
+-moz-transform:rotate(7deg); /* Firefox */
+-webkit-transform:rotate(7deg); /* Safari and Chrome */
+-o-transform:rotate(7deg); /* Opera */
 }
 
 #button_music_container{
@@ -260,11 +270,11 @@ filter:alpha(opacity=100);
 #zombie{
 background:transparent url('../img/zombie.png') 0 0 no-repeat;
 visibility:visible;
-width:218px;
+width:356px;
 height:480px;
 position:absolute;
 border:0;
-margin-left:6%;
+margin-left:1%;
 opacity:1.0;
 filter:alpha(opacity=100);
 }
@@ -395,4 +405,13 @@ animation-timing-function: linear;
 	80% { transform: translate(-1px, -1px) rotate(1deg); }
 	90% { transform: translate(2px, 2px) rotate(0deg); }
 	100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+
+@font-face {
+font-family: 'londrina';
+src: url('../fonts/LondrinaSolid-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+url('../fonts/LondrinaSolid-Regular-webfont.woff') format('woff'),
+url('../fonts/LondrinaSolid-Regular-webfont.ttf') format('truetype'),
+url('../fonts/LondrinaSolid-Regular-webfont.svg#svgFontName') format('svg');
 }

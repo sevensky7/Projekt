@@ -71,7 +71,8 @@ pause: function () {
       $("#jquery_jplayer").jPlayer({
         ready: function() {
           $(this).jPlayer("setMedia", {
-            mp3: "audio/DST-Crow.mp3"
+            mp3: "audio/DST-Crow.mp3",
+			oga: "audio/DST-Crow.ogg"
           }).jPlayer("play");
           var click = document.ontouchstart === undefined ? 'click' : 'touchstart';
           var kickoff = function () {

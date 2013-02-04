@@ -16,14 +16,13 @@
         <script type="text/javascript" src="js/jquery.mobile-1.2.0.min.js"></script>
 		<script type="text/javascript" src="js/box2d-web-2.1.a.3.js"></script>
 		<script type="text/javascript" src="js/jcanvas.min.js"></script>
-		<script type="text/javascript" src="js/fabric.0.9.15.min.js"></script>
 		<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
+	
 		
-		
-		<script type="text/javascript">
+	<script type="text/javascript">
 
 	$(document).ready(function() {
-
+	
 	function preventBehavior(e) {
     e.preventDefault(); 
 	};
@@ -39,31 +38,6 @@
 		touchEvent.preventDefault();     //THIS IS THE KEY. You can read the difficult doc released by W3C to learn more.
 	}};
 	
-	/*
-	setTimeout(function (){
-		var w1 = $(window).width();
-		$('meta[name="viewport"]').remove();//remove previous metatag (no reason just so we keep it clean)
-		var px = 480;//target width to achieve
-		var x = 320/w1;// calculate ratio (320 is the width set by viewport on head->meta,
-		var out = Math.floor(px*x);//outcome..
-		// var out = Math.floor( (32/ w1) * 480 )// alternative shortcode remove the 3 lines above :) 
-		$('').appendTo('head');//insert the new meta tag on the head 
-	},250);
-	*/
-
-	
-	
-pause: function () {
-		  $('#button_music_on').click(function () {
-				$("#jquery_jplayer").jPlayer('play');
-		  })
-		},
-		play: function () {
-		$('#button_music_on').click(function () {
-				$("#jquery_jplayer").jPlayer('pause');
-		})}
-
-
     </script>
 		
     <script type="text/javascript">
@@ -88,14 +62,15 @@ pause: function () {
     });
   </script>  
         
-      
     
     </head>
     <body>
 	<div id="jquery_jplayer" class="jp-jplayer"></div>
 	
       <div data-role="page" id="home" class="welcome_screen" >
-     
+	  <!--Actual zombies-->
+			<div id="zombie"></div>
+		<div class="logotype"></div>
          <!--Welcome Screen-->
         <div data-role="content" class="buttons_welcome_screen">
 
@@ -166,11 +141,16 @@ pause: function () {
 					
 					<div class="overlay">
 					<div class="overlay_begin" onClick="$(this).toggle();"></div>
+					
+					  <!--Gameplay Zombie-->
+						<div id="zombie_gameplay"></div>
 						<a href="#home" data-role="button" data-transition="fade">
 							<div class="button_back"></div>
 						</a>
 							<div class="button_pause" onClick="$('.overlay_begin').toggle();"></div>
 					</div>
+					
+					
 				
 			</div>
 		</div>

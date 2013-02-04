@@ -42,15 +42,15 @@
 				,      b2Fixture = Box2D.Dynamics.b2Fixture
 				,      b2AABB = Box2D.Collision.b2AABB;
 				
-				var world = new b2World(new b2Vec2(0,10), true);
+				var world = new b2World(new b2Vec2(-1,0), true);
 			
 				for(i=0;i<8;i++)	{
 					
 					var colour = [images.gold,images.green,images.lime,images.orange,images.pink,images.purple,images.red,images.turquoise];
 					var src = colour[i];
 					
-					var X = Math.round(Math.random()*25);
-					var Y = Math.round(Math.random()*9);
+					var X = Math.round(40);
+					var Y = Math.round(8);
 					var bodyDef2 = new b2BodyDef;
 					bodyDef2.type = b2Body.b2_dynamicBody;
 					bodyDef2.position.Set(X,Y);
@@ -59,12 +59,28 @@
 					var fixDef2 = new b2FixtureDef;
 					fixDef2.density = 10.0;
 					fixDef2.friction = .9;
-					fixDef2.restitution = .2; 
+					fixDef2.restitution = 1.0; 
 					fixDef2.shape = new b2PolygonShape;
 					fixDef2.shape.SetAsBox((40/60),(40/60)); 
 					
 					world.CreateBody(bodyDef2).CreateFixture(fixDef2);
 				}
+				
+					var colour = [images.gold];
+					var src = colour[0];
+					
+					var X = 40;
+					var Y = 6;
+					var bodyDef3 = new b2BodyDef;
+					bodyDef3.type = b2Body.b2_staticBody;
+					bodyDef3.position.Set(X,Y);
+					bodyDef3.userData = src;
+					
+					
+					world.CreateBody(bodyDef3)
+				
+				
+				
 				
 				
 				// Ground
@@ -93,7 +109,7 @@
 							md.bodyB = body;
 							md.target.Set(mouseX, mouseY);
 							md.collideConnected = true;
-							md.maxForce = 300.0 * body.GetMass();
+							md.maxForce = 100.0 * body.GetMass();
 							mouseJoint = world.CreateJoint(md);
 							body.SetAwake(true);
 						}
@@ -128,7 +144,11 @@
 						   }
 						   else if(b.GetUserData() == 'ground')	{
 							   $("canvas").drawRect({
-								
+								fillStyle: "#8cc924",
+								  x: 100, y: pos.y * 30,
+								  width: 100,   // 600px
+								  height: 100,   // 30px
+								  cornerRadius: 0
 							  })
 						   }
 						

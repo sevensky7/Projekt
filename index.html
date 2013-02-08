@@ -10,15 +10,15 @@
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <title>No Candy For My Zombie</title>
-        <link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
-        <link rel="stylesheet" href="css/stylesheet.css"/>
+        
         <script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.2.0.min.js"></script>
 		<script type="text/javascript" src="js/jcanvas.min.js"></script>
 		<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
 		<script type="text/javascript" src="js/sprite.js"></script>
 		
-	
+	    <link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
+        <link rel="stylesheet" href="css/stylesheet.css"/>
 	
 		
 	
@@ -135,7 +135,7 @@
 
       
       <!--Main Gameplay Screen-->
-      <div data-role="page" id="newgame">
+      <div data-role="page" id="newgame" class="gameplay_screen">
 
         <div data-role="content">
 			<div class="canvas_wrapper">
@@ -152,6 +152,10 @@
 						<a href="#home" data-role="button" data-transition="fade">
 							<div class="button_back"></div>
 						</a>
+							<div class="nomnom" id="nom"></div>
+							<div class="x1" id="x1"></div>
+							<div class="x2" id="x2"></div>
+							<div class="x3" id="x3"></div>
 							<div id="button_pause"></div>
 					</div>
 					

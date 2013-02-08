@@ -3,9 +3,27 @@
 	  
         var canvas_width = canvasElement.width;
         var canvas_height = canvasElement.height;
+		
+		var nom = document.getElementById("nom");
+		var paused = document.getElementById("button_pause");
+		
+		var x1 = document.getElementById("x1");
+		var x2 = document.getElementById("x2");
+		var x3 = document.getElementById("x3");
+		
+		var lifes = 3;
        
 		var score = 0;
-		var paused = 0;
+		var isPaused = 0;
+		
+		$(paused).click(function() {
+		if (isPaused==0){
+		isPaused=1;
+		}
+		else{
+		isPaused=0;
+		}
+		});
 		
 		$(function() {
 		  
@@ -47,13 +65,13 @@
 	
         var zombie_mouth = {
           color: "#8c9f98",
-          x: 110,
+          x: 80,
           y: 210,
           width: 100,
           height: 120,
           draw: function() {
             canvas.fillStyle = this.color;
-            canvas.fillRect(this.x, this.y, this.width, this.height);
+            //canvas.fillRect(this.x, this.y, this.width, this.height);
 			canvas.font = '30px londrina';
 			canvas.fillText(score.toString() , 640, 30);
 			
@@ -61,9 +79,6 @@
         };
 
         var brains = [];
-		
-		
-
         
         function Brain(I) {
           I = I || {};
@@ -111,6 +126,57 @@
         
           return I;
         };
+		
+		
+		
+		var candies = [];
+        
+        function Candy(C) {
+          C = C || {};
+        
+          C.active = true;
+          C.age = Math.floor(Math.random() * 64);
+          
+          C.color = "#A2B";
+        
+          C.x = 800;
+          C.y = 170;
+          C.xVelocity = -5;
+          C.yVelocity = 0;
+        
+          C.width = 100;
+          C.height = 100;
+        
+          C.inBounds = function() {
+            return C.x >= 0 && C.x <= canvas_width &&
+              C.y >= 0 && C.y <= canvas_height;
+          };
+        
+          C.sprite = Sprite("candy");
+        
+          C.draw = function() {
+            this.sprite.draw(canvas, this.x, this.y);
+          };
+        
+          C.update = function() {
+            C.x += C.xVelocity;
+            C.y += C.yVelocity;
+        
+            C.yVelocity = 1 * Math.sin(C.age * Math.PI / 64);
+        
+            C.age++;
+        
+            C.active = C.active && C.inBounds();
+          };
+        
+          C.explode = function() {
+           
+            this.active = false;
+            // Extra Credit: Add an explosion graphic
+          };
+        
+          return C;
+        };
         
      
 		
@@ -132,13 +198,15 @@
 		   
 	
 	
-		if(paused==0) {
+		
 			(function animloop(){
 				requestAnimFrame(animloop);
+				if(isPaused==0) {
 				update();
 				draw();
+				}
 			})();
-		}
+		
 	
 		   
 		   
@@ -157,11 +225,23 @@
           brains = brains.filter(function(brain) {
             return brain.active;
           });
+		  
+		  candies.forEach(function(candy) {
+            candy.update();
+          });
+        
+          candies = candies.filter(function(candy) {
+            return candy.active;
+          });
         
           handleCollisions();
         
           if(Math.random() < 0.005) {
             brains.push(Brain());
+          }
+		  
+		  if(Math.random() < 0.002) {
+            candies.push(Candy());
           }
         }
         
@@ -182,6 +262,11 @@
           brains.forEach(function(brain) {
             brain.draw();
           });
+        
+		
+		   candies.forEach(function(candy) {
+            candy.draw();
+          });
         }
         
         function collides(a, b) {
@@ -200,11 +285,42 @@
               zombie_mouth.explode();
             }
           });
+		  
+		  candies.forEach(function(candy) {
+            if((collides(candy, zombie_mouth)) && (detect==true) ){
+			  score-=10;
+			  candy.explode();
+			  zombie_mouth.candy();
+            }
+          });
+
         }
         
         zombie_mouth.explode = function() {
           this.active = false;
-          // Extra Credit: Add an explosion graphic and then end the game
+		  $(nom).fadeIn();
+          $(nom).css('visibility', 'visible');
+		  $(nom).fadeOut();
+		  $(nom).css('visibility', 'false');
+        };
+		
+		 zombie_mouth.candy = function() {
+		  if (lifes == 3){
+          this.active = false;
+		  $(x1).fadeIn();
+          $(x1).css('visibility', 'visible');
+		  lifes-=1;
+		  }
+		  else if (lifes ==2){
+		  $(x2).fadeIn();
+          $(x2).css('visibility', 'visible');
+		  lifes-=1;
+		  }
+		  else if (lifes ==1){
+		  $(x3).fadeIn();
+          $(x3).css('visibility', 'visible');
+		  lifes-=1;
+		  }
         };
         
         

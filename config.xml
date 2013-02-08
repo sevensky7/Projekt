@@ -19,7 +19,7 @@
 	
 <feature name="http://api.phonegap.com/1.0/device" />
 <preference name="phonegap-version" value="2.2.0" />
-<preference name="fullscreen" value="false" />
+
 <preference name="webviewbounce" value="false" />
 <preference name="orientation" value="landscape" />
 </widget>

@@ -28,21 +28,27 @@
 
 	$(document).ready(function() {
 	
-	function preventBehavior(e) {
-    e.preventDefault(); 
-	};
- 
-	document.addEventListener("touchmove", preventBehavior, false);
-	document.addEventListener("mousemove", mouseClickEvent, false);
-	
-	
-	
-	
-	function onStart ( touchEvent ) {
-		if( navigator.userAgent.match(/Android/i) ) {   // if you already work on Android system, you can        skip this step
-		touchEvent.preventDefault();     //THIS IS THE KEY. You can read the difficult doc released by W3C to learn more.
-	}};
-	
+		var designWidth = 480; // zoom to fit this ratio
+					var designHeight = 762; // not 800 b/c top bar is 38 pixels tall
+					var scaleChange = 1; // % change in scale from above #s
+
+					function zoomScreen() {
+						var docWidth = window.outerWidth;
+						var docHeight = window.outerHeight;
+
+						if (docWidth != designWidth) {
+							var scaleX = docWidth / designWidth;
+							var scaleY = docHeight / designHeight;
+							if (scaleX < scaleY) {
+								$('body').css('zoom', scaleX);
+								scaleChange = scaleX;
+							} else {
+								$('body').css('zoom', scaleY);
+								scaleChange = scaleY;
+							}
+						}
+					}
+	});
     </script>
 		
     <script type="text/javascript">
@@ -139,7 +145,7 @@
 
         <div data-role="content">
 			<div class="canvas_wrapper">
-				<canvas id="canvas" width="800px" height="880px">Not supported.</canvas>    
+				<canvas id="canvas" width="800" height="480">Not supported.</canvas>    
 					
 					
 					

@@ -57,11 +57,11 @@ background-image:url('../img/button_newgame.png');
 visibility:visible;
 background-size:100%;
 background-repeat:no-repeat;
-width:20%;
-height:15%;
+width:30%;
+height:23%;
 position:absolute;
-left:70%;
-top:50%;
+left:65%;
+top:46%;
 border:0;
 opacity:1.0;
 filter:alpha(opacity=100);
@@ -73,11 +73,11 @@ background-image:url('../img/button_about.png');
 visibility:visible;
 background-size:100%;
 background-repeat:no-repeat;
-width:20%;
-height:15%;
+width:30%;
+height:23%;
 position:absolute;
-left:65%;
-top:68%;
+left:60%;
+top:73%;
 border:0;
 opacity:1.0;
 filter:alpha(opacity=100);
@@ -141,24 +141,45 @@ transform:rotate(7deg);
 .button_done{
 background-image:url('../img/button_done.png');
 visibility:visible;
-width:200px;
-height:94px;
-
-margin-left:60%;
-position:relative;
+background-size:100%;
+background-repeat:no-repeat;
+width:30%;
+height:23%;
+position:absolute;
+left:65%;
+top:39%;
 border:0;
 opacity:1.0;
 filter:alpha(opacity=100);
 }
 
+
+.button_tutorial{
+background-image:url('../img/button_tutorial.png');
+visibility:visible;
+background-size:100%;
+background-repeat:no-repeat;
+width:30%;
+height:23%;
+position:absolute;
+left:60%;
+top:66%;
+border:0;
+opacity:1.0;
+filter:alpha(opacity=100);
+}
+
+
 #button_pause{
 background-image:url('../img/button_pause.png');
 visibility:visible;
-width:104px;
-height:106px;
-margin-left:80%;
-margin-top:29%;
-position:relative;
+background-size:100%;
+background-repeat:no-repeat;
+width:15%;
+height:25%;
+position:absolute;
+left:80%;
+top:69%;
 border:0;
 z-index:120;
 opacity:1.0;
@@ -177,20 +198,17 @@ transform:rotate(7deg);
 -o-transform:rotate(7deg); /* Opera */
 }
 
-#button_music_container{
-margin-top:10%;
-margin-left:55%;
-position:relative;
-width:260px;
-height:124px;
-}
+
 
 #button_music_on{
 background-image:url('../img/button_music_on.png');
-width:123px;
-height:124px;
+background-size:100%;
+background-repeat:no-repeat;
+width:15%;
+height:25%;
 position:absolute;
-border:0;
+left:60%;
+top:10%;
 opacity:1.0;
 filter:alpha(opacity=100);
 float:left;
@@ -198,10 +216,13 @@ float:left;
 
 #button_music_off{
 background-image:url('../img/gray_off.png');
-width:123px;
-height:124px;
-margin-left:60%;
+background-size:100%;
+background-repeat:no-repeat;
+width:15%;
+height:25%;
 position:absolute;
+left:78%;
+top:10%;
 border:0;
 opacity:1.0;
 filter:alpha(opacity=100);
@@ -229,26 +250,6 @@ transform:rotate(7deg);
 -moz-transform:rotate(7deg); /* Firefox */
 -webkit-transform:rotate(7deg); /* Safari and Chrome */
 -o-transform:rotate(7deg); /* Opera */
-}
-
-
-
-
-
-
-
-
-.button_tutorial{
-background-image:url('../img/button_tutorial.png');
-visibility:visible;
-width:200px;
-height:94px;
-margin-top:3%;
-margin-left:60%;
-position:relative;
-border:0;
-opacity:1.0;
-filter:alpha(opacity=100);
 }
 
 
@@ -295,21 +296,23 @@ filter:alpha(opacity=100);
 #zombie{
 background:transparent url('../img/zombie.png') 0 0 no-repeat;
 visibility:visible;
-width:356px;
-height:480px;
+background-size:100%;
+background-repeat:no-repeat;
+width:46%;
+height:100%;
 position:absolute;
-border:0;
-margin-left:1%;
+margin-left:3%;
+margin-top:0%;
 opacity:1.0;
 filter:alpha(opacity=100);
 }
 
 #zombie_gameplay{
-background:transparent url('../img/zombie_sprite.png') 0 0 no-repeat;
+background:transparent url('../img/zombie1.png') 0 0 no-repeat;
 visibility:visible;
 background-size:100%;
 background-repeat:no-repeat;
-width:60%;
+width:28%;
 height:100%;
 position:absolute;
 margin-left:5%;
@@ -336,7 +339,8 @@ height:100%;
 width:100%;
 }
 .canvas_wrapper:active  #zombie_gameplay{
-background:transparent url('../img/zombie_sprite.png') 0 0 no-repeat;
+background:transparent url('../img/zombie2.png') 0 0 no-repeat;
+background-size:100%;
 }
 
 .overlay     { position:absolute; top:0%; left:0%; width:100%; height:100%;}
@@ -355,10 +359,10 @@ background-size: 100% 100%;
 background-image:url('../img/logotype.png');
 background-size:100%;
 background-repeat:no-repeat;
-width:40%;
-height:38%;
+width:45%;
+height:42%;
 position:absolute;
-left:55%;
+left:50%;
 top:2%;
 
 
@@ -402,11 +406,13 @@ z-index:120;
 .x1{
 visibility:hidden;
 background-image:url('../img/x1.png');
-width:42px;
-height:32px;
-margin-left:66%;
-margin-top:0%;
+background-size:100%;
+background-repeat:no-repeat;
+width:6%;
+height:7%;
 position:absolute;
+left:66%;
+top:10.5%;
 border:0;
 z-index:120;
  }
@@ -414,11 +420,13 @@ z-index:120;
 .x2{
 visibility:hidden;
 background-image:url('../img/x2.png');
-width:51px;
-height:38px;
-margin-left:72%;
-margin-top:0%;
+background-size:100%;
+background-repeat:no-repeat;
+width:7%;
+height:8%;
 position:absolute;
+left:73%;
+top:10.6%;
 border:0;
 z-index:120;
  }
@@ -426,11 +434,13 @@ z-index:120;
 .x3{
 visibility:hidden;
 background-image:url('../img/x3.png');
-width:62px;
-height:45px;
-margin-left:79%;
-margin-top:0%;
+background-size:100%;
+background-repeat:no-repeat;
+width:8%;
+height:9%;
 position:absolute;
+left:80%;
+top:11.2%;
 border:0;
 z-index:120;
  }

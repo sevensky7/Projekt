@@ -28,26 +28,7 @@
 
 	$(document).ready(function() {
 	
-		var designWidth = 480; // zoom to fit this ratio
-					var designHeight = 762; // not 800 b/c top bar is 38 pixels tall
-					var scaleChange = 1; // % change in scale from above #s
-
-					function zoomScreen() {
-						var docWidth = window.outerWidth;
-						var docHeight = window.outerHeight;
-
-						if (docWidth != designWidth) {
-							var scaleX = docWidth / designWidth;
-							var scaleY = docHeight / designHeight;
-							if (scaleX < scaleY) {
-								$('body').css('zoom', scaleX);
-								scaleChange = scaleX;
-							} else {
-								$('body').css('zoom', scaleY);
-								scaleChange = scaleY;
-							}
-						}
-					}
+	
 	});
     </script>
 		

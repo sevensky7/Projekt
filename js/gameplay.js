@@ -59,7 +59,7 @@
 		$(function() {
 		  
 		  $(canvasElement).bind("mousedown", function(event) {
-		    event.preventDefault();
+		    
 			detect = true;
 		  });
 		  
@@ -69,7 +69,7 @@
 		  });
 		  
 		  $(canvasElement).bind("touchstart", function(event) {
-		  event.preventDefault();
+		  
 			detect = true;
 		  });
 		  

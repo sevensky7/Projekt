@@ -107,15 +107,13 @@
         };
 		
 		
-		 var score_update = {
-          color: "#8c9f98",
-          draw: function() {
-            canvas.fillStyle = this.color;
-            //canvas.fillRect(this.x, this.y, this.width, this.height);
-			canvas.font = '15px londrina';
-			canvas.fillText(score.toString() , 320, 15);
-			//paint.setLinearText(true);
-          }
+		 var score_update = function() {
+			  $(canvasElement).drawText({
+			  fillStyle: "#8c9f98",
+			  x: 320, y: 10,
+			  font: "15pt londrina",
+			  text: score.toString()
+			});
         };
 
         var brains = [];
@@ -302,7 +300,7 @@
 		
         function draw() {
           canvas.clearRect(0, 0, canvas_width, canvas_height);
-		  score_update.draw();
+		  score_update();
           brains.forEach(function(brain) {
             brain.draw();
           });

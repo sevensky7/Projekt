@@ -299,7 +299,7 @@
 		
 		
         function draw() {
-          canvas.clearRect(0, 0, canvas_width, canvas_height);
+          $(canvasElement).clearCanvas();
 		  score_update();
           brains.forEach(function(brain) {
             brain.draw();
@@ -366,7 +366,7 @@
 		  lifes-=1;
 		  }
 		  else if (lifes ==1){
-		  canvas.clearRect(0, 0, canvas_width, canvas_height);
+		  $(canvasElement).clearCanvas()
 		  $(x3).fadeIn();
           $(x3).css('visibility', 'visible');
 		  	

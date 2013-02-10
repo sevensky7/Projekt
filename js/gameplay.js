@@ -13,6 +13,8 @@
 		
 		var started = document.getElementById("overlay_begin");
 		
+		var zombie = document.getElementById("zombie_gameplay");
+		
 		var detect = false;
 		var open_mouth = false;
 		
@@ -45,11 +47,11 @@
 		
 		
 		$(right).click(function() {
-		$('#zombie_gameplay').css('background-image', 'url(img/zombie3.png)')
+		$(zombie).css('background-image', 'url(img/zombie3.png)');
 		});
 		
 		$(left).click(function() {
-		$('#zombie_gameplay').css('background-image', 'url(img/zombie1.png)')
+		$(zombie).css('background-image', 'url(img/zombie1.png)');
 		});
 		
 		
@@ -60,18 +62,18 @@
 		$(function() {
 		  
 		  $(canvasElement).bind("mousedown", function(event) {
-		    $('#zombie_gameplay').css('background-image', 'url(img/zombie2.png)');
+		    $(zombie).css('background-image', 'url(img/zombie2.png)');
 			detect = true;
 		  });
 		  
 		  $(canvasElement).bind("mouseup", function(event) {
 		  event.preventDefault();
-			$('#zombie_gameplay').css('background-image', 'url(img/zombie1.png)');
+			$(zombie).css('background-image', 'url(img/zombie1.png)');
 			detect = false;
 		  });
 		  
 		  $(canvasElement).bind("touchstart", function(event) {
-		    $('#zombie_gameplay').css('background-image', 'url(img/zombie2.png)');
+		    $(zombie).css('background-image', 'url(img/zombie2.png)');
 			detect = true;
 		  });
 		  
@@ -233,7 +235,7 @@
               window.oRequestAnimationFrame      || 
               window.msRequestAnimationFrame     || 
               function( callback ){
-                window.setTimeout(callback, 1000 / 60);
+                window.setTimeout(callback, 1000 / 30);
               };
 			})();
 		

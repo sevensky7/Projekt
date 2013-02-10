@@ -5,6 +5,11 @@ background-color:#e0e0e0;
 overflow: hidden !important;
 border: 0 none;
 position:relative;
+user-select: none;
+-webkit-user-select: none;
+-moz-user-select: none;
+-o-user-select: none;
+-ms-user-select: none;
 }
 
 a{
@@ -358,11 +363,11 @@ z-index:10;
 display:block;
 height:100%;
 width:100%;
-user-select: none;
--webkit-user-select: none;
--moz-user-select: none;
--o-user-select: none;
--ms-user-select: none;
+
+}
+
+body:active #zombie_gameplay{ 
+    background-image:url('../img/zombie2.png');
 }
 
 .canvas_wrapper{

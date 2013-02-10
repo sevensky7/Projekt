@@ -38,6 +38,7 @@
 		$(paused).click(function() {
 		if (isPaused==0){
 		isPaused=1;
+		$(started).toggle();
 		}
 		else{
 		isPaused=0;
@@ -62,24 +63,20 @@
 		$(function() {
 		  
 		  $(canvasElement).bind("mousedown", function(event) {
-		    $(zombie).css('background-image', 'url(img/zombie2.png)');
 			detect = true;
 		  });
 		  
 		  $(canvasElement).bind("mouseup", function(event) {
 		  event.preventDefault();
-			$(zombie).css('background-image', 'url(img/zombie1.png)');
 			detect = false;
 		  });
 		  
 		  $(canvasElement).bind("touchstart", function(event) {
-		    $(zombie).css('background-image', 'url(img/zombie2.png)');
 			detect = true;
 		  });
 		  
 		  $(canvasElement).bind("touchend", function(event) {
 		  event.preventDefault();
-		    $('#zombie_gameplay').css('background-image', 'url(img/zombie1.png)');
 			detect = false;
 		  });
 		  
@@ -337,7 +334,6 @@
         
           brains.forEach(function(brain) {
             if((collides(brain, zombie_mouth)) && (detect==true) ){
-			  canvas.clearRect(0, 0, canvas_width, canvas_height);
 			  score+=10;
               brain.explode();
               zombie_mouth.explode();
@@ -346,7 +342,6 @@
 		  
 		  candies.forEach(function(candy) {
             if((collides(candy, zombie_mouth)) && (detect==true) ){
-			canvas.clearRect(0, 0, canvas_width, canvas_height);
 			  score-=10;
 			  candy.explode();
 			  zombie_mouth.candy();

@@ -22,9 +22,78 @@
 		var lifes = 3;
        
 		var score = 0;
-		var isPaused = 0;
+		var isPaused = 1;
 		
-	
+		$(started).click(function() {
+		isPaused=0;
+		$(x1).css('visibility', 'hidden');
+		$(x2).css('visibility', 'hidden');
+		$(x3).css('visibility', 'hidden');
+		$(this).toggle();
+		});
+		
+		$(paused).click(function() {
+		if (isPaused==0){
+		isPaused=1;
+		}
+		else{
+		isPaused=0;
+		}
+		});
+		
+		
+		
+		$(right).click(function() {
+		$('#zombie_gameplay').css('background-image', 'url(img/zombie3.png)')
+		});
+		
+		$(left).click(function() {
+		$('#zombie_gameplay').css('background-image', 'url(img/zombie1.png)')
+		});
+		
+		
+		
+		
+		
+		
+		$(function() {
+		  
+		  $(document).bind("mousedown", function(event) {
+		    event.preventDefault();
+			detect = true;
+		  });
+		  
+		  $(document).bind("mouseup", function(event) {
+		  event.preventDefault();
+			detect = false;
+		  });
+		  
+		  $(document).bind("touchstart", function(event) {
+		  event.preventDefault();
+			detect = true;
+		  });
+		  
+		  $(document).bind("touchend", function(event) {
+		  event.preventDefault();
+			detect = false;
+		  });
+		  
+		});
+		
+		
+		
+		window.onload = function(){
+			document.getElementById('button_pause').on('click', function(){
+				if (paused === 0) { 
+					paused = 1;
+				}
+				
+				else { 
+					 paused = 0;
+				}
+			});
+
+		};
 
 		
   

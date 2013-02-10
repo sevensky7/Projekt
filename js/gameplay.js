@@ -96,9 +96,9 @@
 	
         var zombie_mouth = {
           color: "#8c9f98",
-          x: 60,
+          x: 55,
           y: 105,
-          width: 1,
+          width: 20,
           height: 60
         };
 		
@@ -151,7 +151,7 @@
             I.x += I.xVelocity;
             I.y += I.yVelocity;
         
-            I.yVelocity = 1 * Math.sin(I.age * Math.PI / 32);
+            I.yVelocity = 1 * Math.sin(3.14 / 32);
         
             I.age++;
         
@@ -202,7 +202,7 @@
             C.x += C.xVelocity;
             C.y += C.yVelocity;
         
-            C.yVelocity = 1 * Math.sin(C.age * Math.PI / 32);
+            C.yVelocity = 1 * Math.sin(3.14 / 32);
         
             C.age++;
         

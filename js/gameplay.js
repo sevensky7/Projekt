@@ -16,7 +16,7 @@
 		var lifes = 3;
        
 		var score = 0;
-		var isPaused = 0;
+		var isPaused = 1;
 		
 		$(paused).click(function() {
 		if (isPaused==0){
@@ -81,7 +81,7 @@
             //canvas.fillRect(this.x, this.y, this.width, this.height);
 			canvas.font = '15px londrina';
 			canvas.fillText(score.toString() , 320, 15);
-			
+			//paint.setLinearText(true);
           }
         };
 

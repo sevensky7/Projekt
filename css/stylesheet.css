@@ -326,6 +326,7 @@ position:absolute;
 margin-left:5%;
 margin-top:0%;
 border:0;
+z-index:0;
 
 -webkit-animation-name: zombie;
 -webkit-animation-duration: 6s;
@@ -373,6 +374,7 @@ top:0%;
 left:0%;
 height:100%;
 width:100%;
+z-index:11;
 }
 
 #canvas_wrapper:active #zombie_gameplay{ 

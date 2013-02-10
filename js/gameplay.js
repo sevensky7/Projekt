@@ -75,8 +75,9 @@
 		
 		
 		 var score_update = {
+          color: "#8c9f98",
           draw: function() {
-            canvas.fillStyle = '#765222E';
+            canvas.fillStyle = this.color;
             //canvas.fillRect(this.x, this.y, this.width, this.height);
 			canvas.font = '15px londrina';
 			canvas.fillText(score.toString() , 320, 15);
@@ -199,7 +200,7 @@
               window.oRequestAnimationFrame      || 
               window.msRequestAnimationFrame     || 
               function( callback ){
-                window.setTimeout(callback, 1000 / 60);
+                window.setInterval(callback, 1000 / 60);
               };
 			})();
 		

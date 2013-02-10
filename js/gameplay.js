@@ -248,6 +248,7 @@
 			(function animloop(){
 				requestAnimFrame(animloop);
 				if(isPaused==0) {
+				canvas.clearRect(0, 0, canvas_width, canvas_height);
 				update();
 				draw();
 				}
@@ -305,7 +306,7 @@
 		
 		
         function draw() {
-          canvas.clearRect(0, 0, canvas_width, canvas_height);
+          
 		  score_update();
           brains.forEach(function(brain) {
             brain.draw();

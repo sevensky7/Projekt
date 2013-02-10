@@ -28,7 +28,7 @@
 	<script type="text/javascript">
 
 	$(document).ready(function() {
-	
+	$(zombie_gameplay).toggleClass("paused"); 
 	
 	});
     </script>
@@ -102,15 +102,16 @@
 				  <div id="canvas_wrapper">
 				<canvas id="canvas" height="240" width="400">Not supported.</canvas>    	
 				
-					<div id="overlay_begin"></div>
+					<div id="overlay_begin">
+						 <a href="#toggle" data-role="button" data-transition="fade" id="button_play"></a>
+						 <a href="#toggle" data-role="button" data-transition="fade" id="button_restart"></a>
+						 <a href="#home" data-role="button" data-transition="fade" id="button_exit"></a>
+					</div>
 					
 					  <!--Gameplay Zombie-->
 					
 						<div id="zombie_gameplay"></div>
-						
-						<a href="#home" data-role="button" data-transition="fade">
-							<div class="button_back"></div>
-						</a>
+					
 						
 						
 						

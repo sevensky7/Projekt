@@ -13,6 +13,10 @@
 		
 		var started = document.getElementById("overlay_begin");
 		
+		var play = document.getElementById("button_play");
+		var restart = document.getElementById("button_restart");
+		var exit = document.getElementById("button_exit");
+		
 		var zombie = document.getElementById("zombie_gameplay");
 		
 		var detect = false;
@@ -27,22 +31,29 @@
 		var score = 0;
 		var isPaused = 1;
 		
-		$(started).click(function() {
-		isPaused=0;
-		$(x1).css('visibility', 'hidden');
-		$(x2).css('visibility', 'hidden');
-		$(x3).css('visibility', 'hidden');
-		$(this).toggle();
+		$(play).click(function() {
+		isPaused=0;	
+		$(started).toggle();
+		$(zombie_gameplay).toggleClass("paused"); 
 		});
 		
-		$(paused).click(function() {
-		if (isPaused==0){
-		isPaused=1;
+		$(restart).click(function() {
+		isPaused=0;	
+		canvas.clearRect(0, 0, canvas_width, canvas_height);
+		score=0;
+		$(x1).css('visibility','hidden');
+		$(x2).css('visibility','hidden');
+		$(x3).css('visibility','hidden');
 		$(started).toggle();
-		}
-		else{
-		isPaused=0;
-		}
+		$(zombie_gameplay).toggleClass("paused"); 
+		});
+		
+		
+		
+		$(paused).click(function() {
+			isPaused=1;
+			$(started).toggle();
+			$(zombie_gameplay).toggleClass("paused"); 
 		});
 		
 		

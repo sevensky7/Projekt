@@ -18,6 +18,7 @@
     
     return {
       draw: function(canvas, x, y) {
+	    canvas.clearRect(0, 0, canvas_width, canvas_height);
         canvas.drawImage(
           image,
           sourceX,

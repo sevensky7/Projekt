@@ -5,7 +5,13 @@
         var canvas_height = canvasElement.height;
 		
 		var nom = document.getElementById("nom");
+		
+		
 		var paused = document.getElementById("button_pause");
+		var right = document.getElementById("button_right");
+		var left = document.getElementById("button_left");
+		
+		var started = document.getElementById("overlay_begin");
 		
 		var detect = false;
 		
@@ -18,6 +24,14 @@
 		var score = 0;
 		var isPaused = 1;
 		
+		$(started).click(function() {
+		isPaused=0;
+		$(x1).css('visibility', 'hidden');
+		$(x2).css('visibility', 'hidden');
+		$(x3).css('visibility', 'hidden');
+		$(this).toggle();
+		});
+		
 		$(paused).click(function() {
 		if (isPaused==0){
 		isPaused=1;
@@ -26,6 +40,21 @@
 		isPaused=0;
 		}
 		});
+		
+		
+		
+		$(right).click(function() {
+		$('#zombie_gameplay').css('background-image', 'url(img/zombie3.png)')
+		});
+		
+		$(left).click(function() {
+		$('#zombie_gameplay').css('background-image', 'url(img/zombie1.png)')
+		});
+		
+		
+		
+		
+		
 		
 		$(function() {
 		  
@@ -80,7 +109,6 @@
             canvas.fillStyle = this.color;
             //canvas.fillRect(this.x, this.y, this.width, this.height);
 			canvas.font = '15px londrina';
-			canvas.clearRect(0, 0, canvas_width, canvas_height);
 			canvas.fillText(score.toString() , 320, 15);
 			//paint.setLinearText(true);
           }
@@ -338,10 +366,22 @@
 		  lifes-=1;
 		  }
 		  else if (lifes ==1){
+		  canvas.clearRect(0, 0, canvas_width, canvas_height);
 		  $(x3).fadeIn();
           $(x3).css('visibility', 'visible');
-		  lifes-=1;
+		  	
+				isPaused=1;
+				$(started).fadeToggle();
+				lifes=3;
+				score=0;
+				
+			
 		  }
-        };
+		 
+			
+			
+		  };
+      
         
+		
         

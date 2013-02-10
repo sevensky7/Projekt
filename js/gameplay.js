@@ -56,25 +56,7 @@
 		
 		
 		
-		$(function() {
-		  
-		  $(document).bind("mousedown", function(event) {
-			detect = true;
-		  });
-		  
-		  $(document).bind("mouseup", function(event) {
-			detect = false;
-		  });
-		  
-		  $(document).bind("touchstart", function(event) {
-			detect = true;
-		  });
-		  
-		  $(document).bind("touchend", function(event) {
-			detect = false;
-		  });
-		  
-		});
+	
 		
 		
 		
@@ -92,7 +74,7 @@
 		};
 
 		
-       
+  
 	
         var zombie_mouth = {
           color: "#8c9f98",
@@ -123,9 +105,7 @@
           I.age = Math.floor(Math.random() * 32);
           
           I.color = "#A2B";
-        
-		 
-		
+    
           I.x = 400;
           I.y = 87;
           I.xVelocity = -(Math.floor(Math.random() * (5 - 2 + 1)) + 2);
@@ -151,7 +131,7 @@
             I.x += I.xVelocity;
             I.y += I.yVelocity;
         
-            I.yVelocity = 1 * Math.sin(3.14 / 32);
+            I.yVelocity = 1 * Math.sin(I.age * Math.PI / 32);
         
             I.age++;
         
@@ -202,7 +182,7 @@
             C.x += C.xVelocity;
             C.y += C.yVelocity;
         
-            C.yVelocity = 1 * Math.sin(3.14 / 32);
+            C.yVelocity = 1 * Math.sin(C.age * Math.PI / 32);
         
             C.age++;
         

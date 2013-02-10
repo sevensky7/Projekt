@@ -213,9 +213,7 @@
           };
         
           C.explode = function() {
-           
             this.active = false;
-            // Extra Credit: Add an explosion graphic
           };
         
           return C;
@@ -299,9 +297,7 @@
         };
 		
 		
-		
-        //zombie_mouth.draw();
-		
+
 		
         function draw() {
           
@@ -359,8 +355,8 @@
         };
 		
 		 zombie_mouth.candy = function() {
+		  this.active = false;
 		  if (lifes == 3){
-          this.active = false;
 		  $(x1).fadeIn();
           $(x1).css('visibility', 'visible');
 		  lifes-=1;

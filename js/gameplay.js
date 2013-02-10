@@ -7,6 +7,8 @@
 		var nom = document.getElementById("nom");
 		var paused = document.getElementById("button_pause");
 		
+		var detect = false;
+		
 		var x1 = document.getElementById("x1");
 		var x2 = document.getElementById("x2");
 		var x3 = document.getElementById("x3");
@@ -189,7 +191,7 @@
               window.oRequestAnimationFrame      || 
               window.msRequestAnimationFrame     || 
               function( callback ){
-                window.setTimeout(callback, 1000 / 60);
+                window.setTimeout(callback, 1000 / 30);
               };
 			})();
 		
@@ -252,23 +254,29 @@
             y: this.y + this.height/2
           };
         };
-        
+		
+		
+		
+        //zombie_mouth.draw();
+		
+		
         function draw() {
           canvas.clearRect(0, 0, canvas_width, canvas_height);
-          zombie_mouth.draw();
-          
-		  
-        
+
           brains.forEach(function(brain) {
             brain.draw();
           });
-        
 		
-		   candies.forEach(function(candy) {
+		  candies.forEach(function(candy) {
             candy.draw();
           });
+		 
         }
         
+		
+		
+		
+		
         function collides(a, b) {
           return a.x < b.x + b.width &&
             a.x + a.width > b.x &&
@@ -276,6 +284,9 @@
             a.y + a.height > b.y;
         }
         
+		
+		
+		
         function handleCollisions() {   
         
           brains.forEach(function(brain) {

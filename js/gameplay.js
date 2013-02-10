@@ -14,6 +14,7 @@
 		var started = document.getElementById("overlay_begin");
 		
 		var detect = false;
+		var open_mouth = false;
 		
 		var x1 = document.getElementById("x1");
 		var x2 = document.getElementById("x2");
@@ -59,22 +60,24 @@
 		$(function() {
 		  
 		  $(canvasElement).bind("mousedown", function(event) {
-		    
+		    $('#zombie_gameplay').css('background-image', 'url(img/zombie2.png)');
 			detect = true;
 		  });
 		  
 		  $(canvasElement).bind("mouseup", function(event) {
 		  event.preventDefault();
+			$('#zombie_gameplay').css('background-image', 'url(img/zombie1.png)');
 			detect = false;
 		  });
 		  
 		  $(canvasElement).bind("touchstart", function(event) {
-		  
+		    $('#zombie_gameplay').css('background-image', 'url(img/zombie2.png)');
 			detect = true;
 		  });
 		  
 		  $(canvasElement).bind("touchend", function(event) {
 		  event.preventDefault();
+		    $('#zombie_gameplay').css('background-image', 'url(img/zombie1.png)');
 			detect = false;
 		  });
 		  

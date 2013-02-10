@@ -80,6 +80,7 @@
             canvas.fillStyle = this.color;
             //canvas.fillRect(this.x, this.y, this.width, this.height);
 			canvas.font = '15px londrina';
+			canvas.clearRect(0, 0, canvas_width, canvas_height);
 			canvas.fillText(score.toString() , 320, 15);
 			//paint.setLinearText(true);
           }

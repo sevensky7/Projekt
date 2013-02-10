@@ -248,7 +248,7 @@
 			(function animloop(){
 				requestAnimFrame(animloop);
 				if(isPaused==0) {
-				canvas.clearRect(0, 0, canvas_width, canvas_height);
+				$(canvasElement).clearCanvas();
 				update();
 				draw();
 				}

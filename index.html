@@ -33,27 +33,9 @@
 	});
     </script>
 		
-    <script type="text/javascript">
-    $(document).ready(function(){
-      $("#jquery_jplayer").jPlayer({
-        ready: function() {
-          $(this).jPlayer("setMedia", {
-            mp3: "audio/DST-Crow.mp3",
-			oga: "audio/DST-Crow.ogg"
-          }).jPlayer("play");
-          var click = document.ontouchstart === undefined ? 'click' : 'touchstart';
-          var kickoff = function () {
-            $("#jquery_jplayer").jPlayer("play");
-            document.documentElement.removeEventListener(click, kickoff, true);
-          };
-          document.documentElement.addEventListener(click, kickoff, true);
-        },
-	
-        loop: true,
-        swfPath: "/js"
-      });
-    });
-  </script>  
+ 
+ 
+ 
         
     
     </head>
@@ -100,8 +82,8 @@
 		
 		  <!--Music On/Off Button-->
 		  <div id="button_music_container">
-            <div id="button_music_on" onClick="$('#jquery_jplayer').jPlayer('play');$(this).css('background-image', 'url(img/button_music_on.png)');$('#button_music_off').css('background-image', 'url(img/gray_off.png)');"></div>
-			<div id="button_music_off" onClick="$('#jquery_jplayer').jPlayer('pause');$(this).css('background-image', 'url(img/button_music_off.png)');$('#button_music_on').css('background-image', 'url(img/gray_on.png)');"></div>
+            <div id="button_music_on" onClick="$(this).css('background-image', 'url(img/button_music_on.png)');$('#button_music_off').css('background-image', 'url(img/gray_off.png)');"></div>
+			<div id="button_music_off" onClick="$(this).css('background-image', 'url(img/button_music_off.png)');$('#button_music_on').css('background-image', 'url(img/gray_on.png)');"></div>
 			</div>
           <!--Tutorial Button-->
           <a href="#tutorial" data-role="button" data-transition="fade" class="button_tutorial"></a>

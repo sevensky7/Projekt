@@ -58,22 +58,22 @@
 		
 		$(function() {
 		  
-		  $(document).bind("mousedown", function(event) {
+		  $(canvasElement).bind("mousedown", function(event) {
 		    event.preventDefault();
 			detect = true;
 		  });
 		  
-		  $(document).bind("mouseup", function(event) {
+		  $(canvasElement).bind("mouseup", function(event) {
 		  event.preventDefault();
 			detect = false;
 		  });
 		  
-		  $(document).bind("touchstart", function(event) {
+		  $(canvasElement).bind("touchstart", function(event) {
 		  event.preventDefault();
 			detect = true;
 		  });
 		  
-		  $(document).bind("touchend", function(event) {
+		  $(canvasElement).bind("touchend", function(event) {
 		  event.preventDefault();
 			detect = false;
 		  });

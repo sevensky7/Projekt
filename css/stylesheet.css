@@ -366,15 +366,17 @@ width:100%;
 
 }
 
-body:active #zombie_gameplay{ 
-    background-image:url('../img/zombie2.png');
-}
 
-.canvas_wrapper{
+#canvas_wrapper{
 position: relative;
 height:100%;
 width:100%;
 }
+
+#canvas_wrapper:active #zombie_gameplay{ 
+    background-image:url('../img/zombie2.png');
+}
+
 
 
 .overlay     { position:absolute; top:0%; left:0%; width:100%; height:100%;}

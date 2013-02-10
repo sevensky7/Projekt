@@ -96,9 +96,9 @@
 	
         var zombie_mouth = {
           color: "#8c9f98",
-          x: 40,
+          x: 60,
           y: 105,
-          width: 50,
+          width: 1,
           height: 60
         };
 		
@@ -329,7 +329,6 @@
         
           brains.forEach(function(brain) {
             if((collides(brain, zombie_mouth)) && (detect==true) ){
-			canvas.clearRect(0, 0, canvas_width, canvas_height);
 			  score+=10;
               brain.explode();
               zombie_mouth.explode();
@@ -338,7 +337,6 @@
 		  
 		  candies.forEach(function(candy) {
             if((collides(candy, zombie_mouth)) && (detect==true) ){
-			canvas.clearRect(0, 0, canvas_width, canvas_height);
 			  score-=10;
 			  candy.explode();
 			  zombie_mouth.candy();
@@ -348,7 +346,6 @@
         }
         
         zombie_mouth.explode = function() {
-		canvas.clearRect(0, 0, canvas_width, canvas_height);
           this.active = false;
 		  $(nom).fadeIn();
           $(nom).css('visibility', 'visible');

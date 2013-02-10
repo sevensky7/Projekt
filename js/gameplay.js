@@ -265,6 +265,7 @@
 		
         function update() {
             
+			
           brains.forEach(function(brain) {
             brain.update();
           });
@@ -306,7 +307,7 @@
 		
 		
         function draw() {
-          canvas.clearRect(0, 0, canvas_width, canvas_height);
+          
 		  score_update();
           brains.forEach(function(brain) {
             brain.draw();
@@ -336,6 +337,7 @@
         
           brains.forEach(function(brain) {
             if((collides(brain, zombie_mouth)) && (detect==true) ){
+			  canvas.clearRect(0, 0, canvas_width, canvas_height);
 			  score+=10;
               brain.explode();
               zombie_mouth.explode();
@@ -344,6 +346,7 @@
 		  
 		  candies.forEach(function(candy) {
             if((collides(candy, zombie_mouth)) && (detect==true) ){
+			canvas.clearRect(0, 0, canvas_width, canvas_height);
 			  score-=10;
 			  candy.explode();
 			  zombie_mouth.candy();

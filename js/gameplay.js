@@ -67,15 +67,20 @@
 	
         var zombie_mouth = {
           color: "#8c9f98",
-          x: 80,
-          y: 210,
-          width: 100,
-          height: 120,
+          x: 40,
+          y: 105,
+          width: 50,
+          height: 60
+        };
+		
+		
+		 var score_update = {
+          color: "#8c9f98",
           draw: function() {
             canvas.fillStyle = this.color;
             //canvas.fillRect(this.x, this.y, this.width, this.height);
-			canvas.font = '30px londrina';
-			canvas.fillText(score.toString() , 640, 30);
+			canvas.font = '15px londrina';
+			canvas.fillText(score.toString() , 320, 15);
 			
           }
         };
@@ -86,17 +91,21 @@
           I = I || {};
         
           I.active = true;
-          I.age = Math.floor(Math.random() * 64);
+          I.age = Math.floor(Math.random() * 32);
           
           I.color = "#A2B";
         
-          I.x = 800;
-          I.y = 170;
-          I.xVelocity = -5;
+		 
+		
+          I.x = 400;
+          I.y = 87;
+          I.xVelocity = -(Math.floor(Math.random() * (5 - 2 + 1)) + 2);
+
+
           I.yVelocity = 0;
         
-          I.width = 100;
-          I.height = 87;
+          I.width = 50;
+          I.height = 43;
         
           I.inBounds = function() {
             return I.x >= 0 && I.x <= canvas_width &&
@@ -113,7 +122,7 @@
             I.x += I.xVelocity;
             I.y += I.yVelocity;
         
-            I.yVelocity = 1 * Math.sin(I.age * Math.PI / 64);
+            I.yVelocity = 1 * Math.sin(I.age * Math.PI / 32);
         
             I.age++;
         
@@ -137,17 +146,17 @@
           C = C || {};
         
           C.active = true;
-          C.age = Math.floor(Math.random() * 64);
+          C.age = Math.floor(Math.random() * 32);
           
           C.color = "#A2B";
         
-          C.x = 800;
-          C.y = 170;
-          C.xVelocity = -5;
+          C.x = 400;
+          C.y = 87;
+          C.xVelocity = -(Math.floor(Math.random() * (5 - 2 + 1)) + 2);
           C.yVelocity = 0;
         
-          C.width = 100;
-          C.height = 100;
+          C.width = 50;
+          C.height = 50;
         
           C.inBounds = function() {
             return C.x >= 0 && C.x <= canvas_width &&
@@ -164,7 +173,7 @@
             C.x += C.xVelocity;
             C.y += C.yVelocity;
         
-            C.yVelocity = 1 * Math.sin(C.age * Math.PI / 64);
+            C.yVelocity = 1 * Math.sin(C.age * Math.PI / 32);
         
             C.age++;
         
@@ -262,7 +271,7 @@
 		
         function draw() {
           canvas.clearRect(0, 0, canvas_width, canvas_height);
-
+		  score_update.draw();
           brains.forEach(function(brain) {
             brain.draw();
           });

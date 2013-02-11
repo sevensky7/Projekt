@@ -47,6 +47,12 @@ position:relative;
 border:0;
 }
 
+.tutorial_screen{
+background-image:url('../img/background_tutorial.jpg') !important;
+background-size: 100% 100%;
+position:relative;
+border:0;
+}
 
 
 .button_newgame{
@@ -198,7 +204,9 @@ filter:alpha(opacity=100);
 #button_restart:active,
 #button_restart:hover,
 #button_exit:active,
-#button_exit:hover
+#button_exit:hover,
+#button_back:active,
+#button_back:hover
 {
 opacity:0.8;
 filter:alpha(opacity=80);
@@ -324,26 +332,24 @@ transform:rotate(7deg);
 
 
 
-.button_back{
+#button_back{
 background-image:url('../img/button_back.png');
 visibility:visible;
-width:200px;
-height:94px;
+background-size:100%;
+background-repeat:no-repeat;
+width:15%;
+height:20%;
+position:absolute;
+left:80%;
+top:5%;
+padding-top:10%;
 border:0;
+z-index:80;
 opacity:1.0;
 filter:alpha(opacity=100);
 }
 
-.button_back:active,
-.button_back:hover{
-opacity:0.8;
-filter:alpha(opacity=80);
-transform:rotate(7deg);
--ms-transform:rotate(7deg); /* IE 9 */
--moz-transform:rotate(7deg); /* Firefox */
--webkit-transform:rotate(7deg); /* Safari and Chrome */
--o-transform:rotate(7deg); /* Opera */
-}
+
 
 
 

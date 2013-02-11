@@ -53,6 +53,8 @@
 		$(paused).click(function() {
 			isPaused=1;
 			$(started).toggle();
+			$(play).show();
+		    $(exit).show();
 			$(zombie_gameplay).toggleClass("paused"); 
 		});
 		
@@ -148,14 +150,14 @@
           I.yVelocity = 0;
         
           I.width = 50;
-          I.height = 43;
+          I.height = 38;
         
           I.inBounds = function() {
             return I.x >= 0 && I.x <= canvas_width &&
               I.y >= 0 && I.y <= canvas_height;
           };
         
-          I.sprite = Sprite("brain");
+          I.sprite = Sprite("brain2");
         
           I.draw = function() {
             this.sprite.draw(canvas, this.x, this.y);
@@ -205,8 +207,15 @@
             return C.x >= 0 && C.x <= canvas_width &&
               C.y >= 0 && C.y <= canvas_height;
           };
-        
-          C.sprite = Sprite("candy");
+			
+		  which_sprite = Math.floor(Math.random() * 2) + 1;
+		  
+		  if (which_sprite==1){
+          C.sprite = Sprite("candy2");
+		  }
+		  else{
+		  C.sprite = Sprite("candy");
+		  }
         
           C.draw = function() {
             this.sprite.draw(canvas, this.x, this.y);
@@ -290,11 +299,11 @@
         
           handleCollisions();
         
-          if(Math.random() < 0.005) {
+          if(Math.random() < 0.007) {
             brains.push(Brain());
           }
 		  
-		  if(Math.random() < 0.002) {
+		  if(Math.random() < 0.006) {
             candies.push(Candy());
           }
         }
@@ -381,12 +390,16 @@
 		  canvas.clearRect(0, 0, canvas_width, canvas_height);
 		  $(x3).fadeIn();
           $(x3).css('visibility', 'visible');
-		  	
-				isPaused=1;
-				$(started).fadeToggle();
-				lifes=3;
-				score=0;
-				
+		  isPaused=1;
+		  $(started).fadeToggle();
+	      lifes=3;
+		  score=0;
+		  $(x1).fadeToggle();
+		  $(x2).fadeToggle();
+		  $(x3).fadeToggle();
+		  $(play).hide();
+		  $(exit).hide();
+		  $(zombie_gameplay).toggleClass("paused"); 
 			
 		  }
 		 

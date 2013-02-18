@@ -263,7 +263,10 @@
 			(function animloop(){
 				requestAnimFrame(animloop);
 				if(isPaused==0) {
+				canvas.save();
+				canvas.setTransform(1, 0, 0, 1, 0, 0);
 				canvas.clearRect(0, 0, canvas_width, canvas_height);
+				canvas.restore();
 				update();
 				draw();
 				}

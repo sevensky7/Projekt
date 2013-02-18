@@ -351,7 +351,6 @@
         
           brains.forEach(function(brain) {
             if((collides(brain, zombie_mouth)) && (detect==true) ){
-			canvas.clearRect(0, 0, canvas_width, canvas_height);
 			  score+=10;
               brain.explode();
               zombie_mouth.explode();
@@ -360,7 +359,6 @@
 		  
 		  candies.forEach(function(candy) {
             if((collides(candy, zombie_mouth)) && (detect==true) ){
-			canvas.clearRect(0, 0, canvas_width, canvas_height);
 			  score-=10;
 			  candy.explode();
 			  zombie_mouth.candy();
@@ -390,7 +388,6 @@
 		  lifes-=1;
 		  }
 		  else if (lifes ==1){
-		  canvas.clearRect(0, 0, canvas_width, canvas_height);
 		  $(x3).fadeIn();
           $(x3).css('visibility', 'visible');
 		  isPaused=1;

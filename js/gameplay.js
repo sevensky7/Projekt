@@ -263,10 +263,6 @@
 			(function animloop(){
 				requestAnimFrame(animloop);
 				if(isPaused==0) {
-				canvas.save();
-				canvas.setTransform(1, 0, 0, 1, 0, 0);
-				canvas.clearRect(0, 0, canvas_width, canvas_height);
-				canvas.restore();
 				update();
 				draw();
 				}
@@ -282,7 +278,8 @@
 		
 		
         function update() {
-            
+           
+		  
 			
           brains.forEach(function(brain) {
             brain.update();
@@ -309,6 +306,8 @@
 		  if(Math.random() < 0.006) {
             candies.push(Candy());
           }
+		  
+		  canvas.clearRect(0, 0, canvas_width, canvas_height);
         }
         
         
@@ -325,6 +324,7 @@
         function draw() {
           
 		  score_update();
+		  
           brains.forEach(function(brain) {
             brain.draw();
           });

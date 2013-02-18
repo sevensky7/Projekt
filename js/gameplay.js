@@ -263,6 +263,7 @@
 			(function animloop(){
 				requestAnimFrame(animloop);
 				if(isPaused==0) {
+				canvas.clearRect(0, 0, canvas_width, canvas_height);
 				update();
 				draw();
 				}
@@ -279,7 +280,6 @@
 		
         function update() {
            
-		  
 			
           brains.forEach(function(brain) {
             brain.update();
@@ -306,8 +306,6 @@
 		  if(Math.random() < 0.006) {
             candies.push(Candy());
           }
-		  
-		  canvas.clearRect(0, 0, canvas_width, canvas_height);
         }
         
         
@@ -353,6 +351,7 @@
         
           brains.forEach(function(brain) {
             if((collides(brain, zombie_mouth)) && (detect==true) ){
+			canvas.clearRect(0, 0, canvas_width, canvas_height);
 			  score+=10;
               brain.explode();
               zombie_mouth.explode();
@@ -361,6 +360,7 @@
 		  
 		  candies.forEach(function(candy) {
             if((collides(candy, zombie_mouth)) && (detect==true) ){
+			canvas.clearRect(0, 0, canvas_width, canvas_height);
 			  score-=10;
 			  candy.explode();
 			  zombie_mouth.candy();

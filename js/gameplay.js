@@ -5,6 +5,7 @@
         var canvas_height = canvasElement.height;
 		
 		var nom = document.getElementById("nom");
+		var brainPassed = document.getElementById("bump");
 		
 		
 		var paused = document.getElementById("button_pause");
@@ -18,6 +19,9 @@
 		var exit = document.getElementById("button_exit");
 		
 		var zombie = document.getElementById("zombie_gameplay");
+		var frenzy_bar = document.getElementById("frenzyBar");
+		
+		var last_score=document.getElementById("last_score");
 		
 		var detect = false;
 		var open_mouth = false;
@@ -30,6 +34,24 @@
        
 		var score = 0;
 		var isPaused = 1;
+		var comboCounter = 0;
+		
+		var mouseY = 0;
+		
+		var scaledHeight = $(window).height();
+		
+		var realHeight = canvas_height / scaledHeight;
+		
+	
+		
+		 
+		
+		if (localStorage.getItem(1) === null) {
+		  localStorage.setItem(1,0)
+		}
+				
+		var best_score = localStorage.getItem(1);
+		
 		
 		$(play).click(function() {
 		isPaused=0;	
@@ -69,23 +91,37 @@
 		});
 		
 		
-		
-		
-		
+	
 		
 		$(function() {
 		  
 		  $(canvasElement).bind("mousedown", function(event) {
 			detect = true;
+			
 		  });
 		  
 		  $(canvasElement).bind("mouseup", function(event) {
 		  event.preventDefault();
 			detect = false;
+			//alert(mouseY);
 		  });
+		  
+		   $(canvasElement).bind("mousemove", function(event) {
+		    event.preventDefault();
+			mouseY = Math.floor(event.pageY * realHeight);
+			if ((detect == true) && (mouseY < 135) && (mouseY > 75)){
+			zombie_mouth.y=mouseY;
+			//$(zombie).css('background-image', 'url(img/zombie2.png)');
+			$(zombie).css('top', '+=' + mouseY + 'px');
+			}
+		  });
+		  
+		
+
 		  
 		  $(canvasElement).bind("touchstart", function(event) {
 			detect = true;
+			
 		  });
 		  
 		  $(canvasElement).bind("touchend", function(event) {
@@ -93,11 +129,22 @@
 			detect = false;
 		  });
 		  
+		   $(canvasElement).bind("touchmove", function(event) {
+		    event.preventDefault();
+			mouseY = Math.floor(event.pageY * realHeight);
+			if ((detect == true) && (mouseY < 135) && (mouseY > 75)){
+			zombie_mouth.y=mouseY;
+			}
+		  });
+		  
+		  
+		  
 		});
 		
-		
+
 		
 		window.onload = function(){
+	
 			document.getElementById('button_pause').on('click', function(){
 				if (paused === 0) { 
 					paused = 1;
@@ -114,11 +161,33 @@
   
 	
         var zombie_mouth = {
-          color: "#8c9f98",
-          x: 55,
+          color: "#fff",
+          x: 45,
           y: 105,
           width: 20,
-          height: 60
+          height: 70,
+		  draw: function() {
+            canvasElement.fillStyle = this.color;
+            canvasElement.fillRect(this.x, this.y, this.width, this.height);
+          }
+		  
+        };
+		
+		   zombie_mouth.sprite = Sprite("brain2");
+        
+        zombie_mouth.draw = function() {
+          this.sprite.draw(canvas, this.x, this.y);
+        };
+       
+		
+		var wall = {
+          color: "#8c9f98",
+          x: 0,
+          y: 0,
+          width: 1,
+          height: 480
+	
+	
 		  
         };
 		
@@ -126,7 +195,7 @@
 		 var score_update = function() {
 			  $(canvasElement).drawText({
 			  fillStyle: "#8c9f98",
-			  x: 320, y: 10,
+			  x: 330, y: 10,
 			  font: "15pt londrina",
 			  text: score.toString()
 			});
@@ -167,7 +236,7 @@
             I.x += I.xVelocity;
             I.y += I.yVelocity;
         
-            I.yVelocity = 1 * Math.sin(I.age * Math.PI / 32);
+            I.yVelocity = -1 * Math.sin(I.age * Math.PI / 50);
         
             I.age++;
         
@@ -177,11 +246,77 @@
           I.explode = function() {
            
             this.active = false;
-            // Extra Credit: Add an explosion graphic
+    
           };
         
           return I;
         };
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		var brainsfresh = [];
+        
+        function BrainFresh(F) {
+          F = F || {};
+        
+          F.active = true;
+          F.age = Math.floor(Math.random() * 32);
+          
+          F.color = "#A2B";
+    
+          F.x = 400;
+          F.y = 87;
+          F.xVelocity = -(Math.floor(Math.random() * (5 - 2 + 1)) + 2);
+
+
+          F.yVelocity = 0;
+        
+          F.width = 44;
+          F.height = 44;
+        
+          F.inBounds = function() {
+            return F.x >= 0 && F.x <= canvas_width &&
+              F.y >= 0 && F.y <= canvas_height;
+          };
+        
+          F.sprite = Sprite("brainfresh");
+        
+          F.draw = function() {
+            this.sprite.draw(canvas, this.x, this.y);
+          };
+        
+          F.update = function() {
+            F.x += F.xVelocity;
+            F.y += F.yVelocity;
+        
+            F.yVelocity = -1 * Math.sin(F.age * Math.PI / 50);
+        
+            F.age++;
+        
+            F.active = F.active && F.inBounds();
+          };
+        
+          F.explode = function() {
+           
+            this.active = false;
+    
+          };
+        
+          return F;
+        };
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
@@ -225,7 +360,7 @@
             C.x += C.xVelocity;
             C.y += C.yVelocity;
         
-            C.yVelocity = 1 * Math.sin(C.age * Math.PI / 32);
+			C.yVelocity = -1.3 * Math.sin(C.age * Math.PI / 60);
         
             C.age++;
         
@@ -234,6 +369,10 @@
         
           C.explode = function() {
             this.active = false;
+          };
+		  
+		  C.bump = function() {
+			C.xVelocity = Math.floor(Math.random() * (5 - 2 + 1)) +5;
           };
         
           return C;
@@ -279,14 +418,22 @@
 		
 		
         function update() {
-           
-			
+          $(last_score).html("Score: " + score + "<br />" + "Best Score: " + localStorage.getItem(1));   
+		
           brains.forEach(function(brain) {
             brain.update();
           });
         
           brains = brains.filter(function(brain) {
             return brain.active;
+          });
+		  
+		  brainsfresh.forEach(function(brainfresh) {
+            brainfresh.update();
+          });
+        
+          brainsfresh = brainsfresh.filter(function(brainfresh) {
+            return brainfresh.active;
           });
 		  
 		  candies.forEach(function(candy) {
@@ -298,14 +445,101 @@
           });
         
           handleCollisions();
-        
-          if(Math.random() < 0.007) {
-            brains.push(Brain());
-          }
 		  
-		  if(Math.random() < 0.006) {
-            candies.push(Candy());
-          }
+       
+	    if (score < 100){
+		  bOccurence=0.007;
+		  cOccurence=0.004;
+		  bfOccurence=0.001;
+		} 
+		else if ((score > 100) && (score < 700)){
+		  bOccurence=0.009;
+		  cOccurence=0.011;
+		  bfOccurence=0.002;
+		  //zombie_mouth.y+=400;
+		} 
+		else if ((score > 700) && (score < 1500)){
+		  bOccurence=0.010;
+		  cOccurence=0.015;
+		  bfOccurence=0.003;
+		} 
+		else if ((score > 1500) && (score < 2200)){
+		  bOccurence=0.013;
+		  cOccurence=0.018;
+		  bfOccurence=0.005;
+		} 
+		else if ((score > 2200) && (score < 3000)){
+		  bOccurence=0.016;
+		  cOccurence=0.021;
+		  bfOccurence=0.006;
+		} 
+		else if (score > 3000){
+		  bOccurence=0.024;
+		  cOccurence=0.035;
+		  bfOccurence=0.007;
+		} 
+		
+		
+		
+		if (comboCounter >= 10){
+		  bOccurence=0.04;
+		  cOccurence=0.009;
+		  bfOccurence=0.00;
+		  }
+		  
+		
+	
+		  
+		if(Math.random() < bOccurence) {
+			brains.push(Brain());
+		}
+		  
+		  
+		if(Math.random() < cOccurence) {
+			candies.push(Candy());
+		}
+		
+		if(Math.random() < bfOccurence) {
+			brainsfresh.push(BrainFresh());
+		}
+
+		  
+		 
+		if (comboCounter == 0) {
+		$(frenzy_bar).css('background-image', 'url(img/0.png)');
+		}
+		else if (comboCounter == 1) {
+		$(frenzy_bar).css('background-image', 'url(img/1.png)');
+		}
+		else if (comboCounter==2) {
+		$(frenzy_bar).css('background-image', 'url(img/2.png)');
+		}
+		else if (comboCounter==3) {
+		$(frenzy_bar).css('background-image', 'url(img/3.png)');
+		}
+		else if (comboCounter==4) {
+		$(frenzy_bar).css('background-image', 'url(img/4.png)');
+		}
+		else if (comboCounter==5) {
+		$(frenzy_bar).css('background-image', 'url(img/5.png)');
+		}
+		else if (comboCounter==6) {
+		$(frenzy_bar).css('background-image', 'url(img/6.png)');
+		}
+		else if (comboCounter==7) {
+		$(frenzy_bar).css('background-image', 'url(img/7.png)');
+		}
+		else if (comboCounter==8) {
+		$(frenzy_bar).css('background-image', 'url(img/8.png)');
+		}
+		else if (comboCounter==9) {
+		$(frenzy_bar).css('background-image', 'url(img/9.png)');
+		}
+		else if (comboCounter>=10) {
+		$(frenzy_bar).css('background-image', 'url(img/10.png)');
+		}
+	
+		
         }
         
         
@@ -320,8 +554,10 @@
 
 		
         function draw() {
-          
+          canvas.clearRect(0, 0, canvas_width, canvas_height);
 		  score_update();
+		  
+		  
 		  
           brains.forEach(function(brain) {
             brain.draw();
@@ -330,7 +566,13 @@
 		  candies.forEach(function(candy) {
             candy.draw();
           });
-		 
+		  
+		  brainsfresh.forEach(function(brainfresh) {
+            brainfresh.draw();
+          });
+		  
+		  zombie_mouth.draw();
+
         }
         
 		
@@ -354,16 +596,56 @@
 			  score+=10;
               brain.explode();
               zombie_mouth.explode();
+			  comboCounter+=1;
+            }
+			if(collides(brain, wall)){
+			  score-=10;
+			  comboCounter=0;
+              wall.explode();
             }
           });
+		  
+		  
+		   brainsfresh.forEach(function(brainfresh) {
+            if((collides(brainfresh, zombie_mouth)) && (detect==true) ){
+			  score+=100;
+              brainfresh.explode();
+              zombie_mouth.explode();
+			  comboCounter+=1;
+				candies.forEach(function(candy) {
+				candy.xVelocity = 5;
+				candy.yVelocity = -10;
+			
+				});
+            }
+			if(collides(brainfresh, wall)){
+			  score-=100;
+			  comboCounter=0;
+              wall.explode();
+            }
+          });
+		  
 		  
 		  candies.forEach(function(candy) {
             if((collides(candy, zombie_mouth)) && (detect==true) ){
 			  score-=10;
 			  candy.explode();
 			  zombie_mouth.candy();
+			  comboCounter=0;
+				/*    $(zombie).animate(
+            {"left": "+=150px"},
+            "fast");
+			  zombie_mouth.x+=15; */
             }
+			else if (collides(candy, zombie_mouth)){
+			candy.bump();
+			}
           });
+		  
+		  
+		  
+		  
+		  
 
         }
         
@@ -374,6 +656,15 @@
 		  $(nom).fadeOut();
 		  $(nom).css('visibility', 'false');
         };
+		
+		wall.explode = function() {
+          this.active = false;
+		  $(brainPassed).fadeIn();
+          $(brainPassed).css('visibility', 'visible');
+		  $(brainPassed).fadeOut();
+		  $(brainPassed).css('visibility', 'false');
+        };
+
 		
 		 zombie_mouth.candy = function() {
 		  this.active = false;
@@ -393,19 +684,33 @@
 		  isPaused=1;
 		  $(started).fadeToggle();
 	      lifes=3;
+		  
+		  //if (bestScore < score){
+		 // bestScore = score;
+		//  }
+		
+		  if (score > best_score){
+		  localStorage.setItem (1, score);
+		  best_Score = localStorage.getItem (1, score);
+		  }
+		  
+		  
 		  score=0;
 		  $(x1).fadeToggle();
 		  $(x2).fadeToggle();
 		  $(x3).fadeToggle();
 		  $(play).hide();
 		  $(exit).hide();
-		  $(zombie_gameplay).toggleClass("paused"); 
-			
+		  $(zombie_gameplay).toggleClass("paused"); 		  
 		  }
 		 
 			
 			
 		  };
+		  
+		  
+	
+			
       
         
 		

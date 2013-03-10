@@ -10,6 +10,7 @@ user-select: none;
 -moz-user-select: none;
 -o-user-select: none;
 -ms-user-select: none;
+
 }
 
 a{
@@ -18,8 +19,18 @@ visibility: hidden;
 display:block;
 }
 
-h1{
-font-size:20px;
+.pcontainer{
+left:auto;
+right:auto;
+position:relative;
+font-size:100%;
+}
+
+p{
+font-size:500%;
+font-family:'londrina';
+color: #22456f;
+text-align:center;
 }
 
 * { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
@@ -390,8 +401,9 @@ background-size:100%;
 background-repeat:no-repeat;
 width:28%;
 height:100%;
-position:absolute;
+position:relative;
 left:5%;
+top:0%;
 bottom:0%;
 border:0;
 z-index:0;
@@ -419,6 +431,7 @@ animation-duration: 6s;
 transform-origin:50% 50%;
 animation-iteration-count: infinite;
 animation-timing-function: linear;
+
 }
 
 
@@ -521,6 +534,21 @@ border:0;
 z-index:80;
  }
  
+.bump{
+visibility:hidden;
+background-image:url('../img/wall.png');
+background-size:100%;
+background-repeat:no-repeat;
+width:13%;
+height:13%;
+left:2%;
+top:10%;
+position:absolute;
+padding-top:10%;
+border:0;
+z-index:80;
+ }
+ 
 .x1{
 visibility:hidden;
 background-image:url('../img/x1.png');
@@ -566,6 +594,19 @@ border:0;
 z-index:80;
  }
 
+ .frenzyBar{
+background-image:url('../img/0.png');
+background-size:100%;
+background-repeat:no-repeat;
+width:50%;
+height:8%;
+position:absolute;
+padding-top:10%;
+left:33%;
+top:86%;
+border:0;
+z-index:80;
+ }
  
 
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-		<script src="phonegap.js"></script>
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="format-detection" content="telephone=no" />
 		<meta name="HandheldFriendly" content="true" />
@@ -17,6 +17,8 @@
 		<script type="text/javascript" src="js/jcanvas.min.js"></script>
 		<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
 		<script type="text/javascript" src="js/sprite.js"></script>
+		
+		<script src='http://connect.facebook.net/en_US/all.js'></script>
 		
 	    <link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
         <link rel="stylesheet" href="css/stylesheet.css"/>
@@ -71,7 +73,7 @@
             <div class="overlay_zombie"></div>
       
 		  <!--Actual zombies-->
-			<div id="zombie_gameplay"></div>
+			<div class="zombie_g" id="chooseZombie"></div>
 		
 	      <!--Left Button-->
           <a href="#toggle" data-role="button" data-transition="fade" class="button_left" id="button_left"></a>
@@ -116,11 +118,39 @@
 						 <a href="#toggle" data-role="button" data-transition="fade" id="button_play"></a>
 						 <a href="#toggle" data-role="button" data-transition="fade" id="button_restart"></a>
 						 <a href="#home" data-role="button" data-transition="fade" id="button_exit"></a>
+						 
+		 				    
+							<a id="button_share" onclick='postToFeed(); return false;' data-role="button"></a>
+							<p id='msg'></p>
+							
+							<script> 
+							  FB.init({appId: "348482245257820", status: true, cookie: true});
+
+							  function postToFeed() {
+
+								var obj = {
+								  method: 'feed',
+								  redirect_uri: 'http://pgalor.com/zombie2/js/close.html',
+								  picture: 'http://pgalor.com/test1.png',
+								  name: 'No Candy For My Zombie',
+								  caption: 'I have scored ' + best_score + ' points in the game!',
+								  description: 'Neat, isn\'t it?. Try and beat my score (for FREE).'
+								};
+
+								function callback(response) {
+								  document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+								}
+
+								FB.ui(obj, callback);
+							  }
+							
+							</script>
+						 
 					</div>
 					
 					  <!--Gameplay Zombie-->
 					
-						<div id="zombie_gameplay"></div>
+						<div class="zombie_g" id="zombie_g"></div>
 					
 						
 						

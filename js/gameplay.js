@@ -195,6 +195,7 @@
 		
 	
 		
+		*/
 		
 		
 		$(touchScreen).hammer().bind("tap", function(event) {
@@ -202,7 +203,6 @@
 		});
 		
 		
-		*/
 		
 		
 		
@@ -210,7 +210,7 @@
 		
 		
 		
-		
+		/*
 
 		  
 		  $(touchScreen).bind("touchstart", function(event) {
@@ -247,6 +247,7 @@
 			}
 			return false;
 		  });
+		  */
 		  
 		  
 		  

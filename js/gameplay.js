@@ -1,5 +1,7 @@
 	    var canvasElement = document.getElementById("canvas");
 		var canvas = canvasElement.getContext("2d");
+		
+		var canvasMove=document.getElementById("canvasmove");
 	  
         var canvas_width = canvasElement.width;
         var canvas_height = canvasElement.height;
@@ -45,11 +47,16 @@
 		
 		
 		var scaledHeight = $(window).height();
+		var scaledWidth = $(window).width();
+		
+		var realWidth = canvas_width / scaledWidth;
 		
 		var realHeight = canvas_height / scaledHeight;
 		
+		var ratio = realWidth/realHeight;
 		
 		
+		$('p').css('font-size', 500*ratio + '%');
 	
 		
 		 
@@ -131,9 +138,9 @@
 		
 	
 		
-		$(function() {
+		$(function movements() {
 		  
-		  $(canvasElement).bind("mousedown", function(event) {
+		  $(canvasMove).bind("mousedown", function(event) {
 			detect = true;
 			if (localStorage.getItem(2) == 0){
 						$(zombie_gameplay).css('background-image', 'url(img/zombie2.png)');
@@ -144,7 +151,7 @@
 			
 		  });
 		  
-		  $(canvasElement).bind("mouseup", function(event) {
+		  $(canvasMove).bind("mouseup", function(event) {
 		  detect = false;
 		  if (localStorage.getItem(2) == 0){
 						$(zombie_gameplay).css('background-image', 'url(img/zombie1.png)');
@@ -156,19 +163,20 @@
 			//alert(mouseY);
 		  });
 		  
-		   $(canvasElement).bind("mousemove", function(event) {
+		   $(canvasMove).bind("mousemove", function(event) {
 		    event.preventDefault();
+			
 			mouseY = Math.floor(event.pageY * realHeight);
 			if ((detect == true) && (mouseY > 40) && (mouseY < 160)){
 			zombie_mouth.y=mouseY;
-			$(zombie_gameplay).css('top', event.pageY - 420);
+			$(zombie_gameplay).css('top', event.pageY - scaledHeight/2.1);
 			}
 		  });
 		  
 		
 
 		  
-		  $(canvasElement).bind("touchstart", function(event) {
+		  $(canvasMove).bind("touchstart", function(event) {
 		  event.stopPropagation();
 		  event.preventDefault();
 			detect = true;
@@ -181,7 +189,7 @@
 			
 		  });
 		  
-		  $(canvasElement).bind("touchend", function(event) {
+		  $(canvasMove).bind("touchend", function(event) {
 		    detect = false;
 		  if (localStorage.getItem(2) == 0){
 						$(zombie_gameplay).css('background-image', 'url(img/zombie1.png)');
@@ -192,7 +200,7 @@
 		  event.preventDefault();
 		  });
 		  
-		   $(canvasElement).bind("touchmove", function(event) {
+		   $(canvasMove).bind("touchmove", function(event) {
 		    event.stopPropagation();
 		    event.preventDefault();
 			var touch = event.originalEvent.touches[0] || event.originalEvent.changedTouches[0];
@@ -201,7 +209,7 @@
 			
 			if ((detect == true) && (mouseY > 40) && (mouseY < 160)){
 			zombie_mouth.y=mouseY;
-			$(zombie_gameplay).css('top', touch.pageY - 420);
+			$(zombie_gameplay).css('top', touch.pageY - scaledHeight/2.1);
 			}
 		  });
 		  
@@ -232,7 +240,7 @@
           color: "#fff",
           x: 55,
           y: 105,
-          width: 20,
+          width: 15,
           height: 38,
 		  draw: function() {
             canvasElement.fillStyle = this.color;
@@ -468,11 +476,11 @@
 	
 		
 			(function animloop(){
-				requestAnimFrame(animloop);
 				if(isPaused==0) {
 				update();
 				draw();
 				}
+				requestAnimFrame(animloop);
 			})();
 		
 	
@@ -485,7 +493,7 @@
 		
 		
         function update() {
-          $(last_score).html("Score: " + score + "<br />" + "Best Score: " + localStorage.getItem(1));   
+          $(last_score).html("Score: " + score + "<br />" + "Best Score: " + localStorage.getItem(1)); 
 		
           brains.forEach(function(brain) {
             brain.update();

@@ -494,7 +494,13 @@ top:70%;
 visibility:visible;
 }
 
-
+#touch_screen{
+position:absolute;
+z-index:15;
+display:block;
+height:100%;
+width:100%;
+}
 
 .overlay     { position:absolute; top:0%; left:0%; width:100%; height:100%;}
 

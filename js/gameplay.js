@@ -1,7 +1,7 @@
 	    var canvasElement = document.getElementById("canvas");
 		var canvas = canvasElement.getContext("2d");
 		
-		var canvasMove=document.getElementById("canvasmove");
+		var touchScreen=document.getElementById("touch_screen");
 	  
         var canvas_width = canvasElement.width;
         var canvas_height = canvasElement.height;
@@ -140,7 +140,7 @@
 		
 		$(function movements() {
 		  
-		  $(canvasMove).bind("mousedown", function(event) {
+		  $(touchScreen).bind("mousedown", function(event) {
 			detect = true;
 			if (localStorage.getItem(2) == 0){
 						$(zombie_gameplay).css('background-image', 'url(img/zombie2.png)');
@@ -151,7 +151,7 @@
 			
 		  });
 		  
-		  $(canvasMove).bind("mouseup", function(event) {
+		  $(touchScreen).bind("mouseup", function(event) {
 		  detect = false;
 		  if (localStorage.getItem(2) == 0){
 						$(zombie_gameplay).css('background-image', 'url(img/zombie1.png)');
@@ -163,7 +163,7 @@
 			//alert(mouseY);
 		  });
 		  
-		   $(canvasMove).bind("mousemove", function(event) {
+		   $(touchScreen).bind("mousemove", function(event) {
 		    event.preventDefault();
 			
 			mouseY = Math.floor(event.pageY * realHeight);
@@ -176,7 +176,7 @@
 		
 
 		  
-		  $(canvasMove).bind("touchstart", function(event) {
+		  $(touchScreen).bind("touchstart", function(event) {
 		  event.stopPropagation();
 		  event.preventDefault();
 			detect = true;
@@ -189,7 +189,7 @@
 			
 		  });
 		  
-		  $(canvasMove).bind("touchend", function(event) {
+		  $(touchScreen).bind("touchend", function(event) {
 		    detect = false;
 		  if (localStorage.getItem(2) == 0){
 						$(zombie_gameplay).css('background-image', 'url(img/zombie1.png)');
@@ -200,7 +200,7 @@
 		  event.preventDefault();
 		  });
 		  
-		   $(canvasMove).bind("touchmove", function(event) {
+		   $(touchScreen).bind("touchmove", function(event) {
 		    event.stopPropagation();
 		    event.preventDefault();
 			var touch = event.originalEvent.touches[0] || event.originalEvent.changedTouches[0];

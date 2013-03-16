@@ -164,14 +164,6 @@
 		  });
 		  
 		   $(touchScreen).bind("mousemove", function(event) {
-		    event.preventDefault();
-			detect = true;
-			if (localStorage.getItem(2) == 0){
-						$(zombie_gameplay).css('background-image', 'url(img/zombie2.png)');
-				}
-			if (localStorage.getItem(2) == 1){
-						$(zombie_gameplay).css('background-image', 'url(img/zombie4.png)');
-				}
 			
 			mouseY = Math.floor(event.pageY * realHeight);
 			if ((detect == true) && (mouseY > 40) && (mouseY < 160)){
@@ -182,13 +174,35 @@
 		  
 		
 
-		
+		  
+		  $(touchScreen).bind("touchstart", function(event) {
+		  event.stopPropagation();
+		  event.preventDefault();
+			detect = true;
+			if (localStorage.getItem(2) == 0){
+						$(zombie_gameplay).css('background-image', 'url(img/zombie2.png)');
+				}
+			if (localStorage.getItem(2) == 1){
+						$(zombie_gameplay).css('background-image', 'url(img/zombie4.png)');
+				}
+			
+		  });
+		  
+		  $(touchScreen).bind("touchend", function(event) {
+		    detect = false;
+		  if (localStorage.getItem(2) == 0){
+						$(zombie_gameplay).css('background-image', 'url(img/zombie1.png)');
+				}
+			if (localStorage.getItem(2) == 1){
+						$(zombie_gameplay).css('background-image', 'url(img/zombie3.png)');
+				}
+		  event.preventDefault();
+		  });
 		  
 		   $(touchScreen).bind("touchmove", function(event) {
 		    event.stopPropagation();
 		    event.preventDefault();
-			 event.preventDefault();
-			detect = true;
+
 			if (localStorage.getItem(2) == 0){
 						$(zombie_gameplay).css('background-image', 'url(img/zombie2.png)');
 				}
@@ -236,18 +250,21 @@
           width: 15,
           height: 38,
 		  draw: function() {
-            canvasElement.fillStyle = this.color;
-            canvasElement.fillRect(this.x, this.y, this.width, this.height);
+            $(canvasElement).drawImage({
+			  source: "./img/brain3.png",
+			  x: this.x, y: this.y,
+			  width:15, height: 38
+			});
           }
 		  
         };
 		
-		   zombie_mouth.sprite = Sprite("brain3");
+		  /* zombie_mouth.sprite = Sprite("brain3");
         
         zombie_mouth.draw = function() {
           this.sprite.draw(canvas, this.x, this.y);
         };
-       
+       */
 		
 		var wall = {
           color: "#8c9f98",
@@ -295,10 +312,14 @@
               I.y >= 0 && I.y <= canvas_height;
           };
         
-          I.sprite = Sprite("brain2");
+          //I.sprite = Sprite("brain2");
         
           I.draw = function() {
-            this.sprite.draw(canvas, this.x, this.y);
+             $(canvasElement).drawImage({
+			  source: "./img/brain2.png",
+			  x: this.x, y: this.y,
+			  width:this.width, height: this.height
+			});
           };
         
           I.update = function() {
@@ -354,10 +375,14 @@
               F.y >= 0 && F.y <= canvas_height;
           };
         
-          F.sprite = Sprite("brainfresh");
+          //F.sprite = Sprite("brainfresh");
         
           F.draw = function() {
-            this.sprite.draw(canvas, this.x, this.y);
+            $(canvasElement).drawImage({
+			  source: "./img/brainfresh.png",
+			  x: this.x, y: this.y,
+			  width:this.width, height: this.height
+			});
           };
         
           F.update = function() {
@@ -411,7 +436,7 @@
             return C.x >= 0 && C.x <= canvas_width &&
               C.y >= 0 && C.y <= canvas_height;
           };
-			
+			/*
 		  which_sprite = Math.floor(Math.random() * 2) + 1;
 		  
 		  if (which_sprite==1){
@@ -420,9 +445,13 @@
 		  else{
 		  C.sprite = Sprite("candy");
 		  }
-        
+        */
           C.draw = function() {
-            this.sprite.draw(canvas, this.x, this.y);
+            $(canvasElement).drawImage({
+			  source: "./img/candy.png",
+			  x: this.x, y: this.y,
+			  width:this.width, height: this.height
+			});
           };
         
           C.update = function() {

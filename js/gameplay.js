@@ -198,7 +198,9 @@
 		
 		
 		
-		
+		  var hammertime = Hammer(touchScreen).on("tap", function(event) {
+			alert('hello!');
+		  });
 		
 		
 		

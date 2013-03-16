@@ -196,15 +196,13 @@
 		    event.preventDefault();
 		  });
 		
-		
-		
-		  var hammertime = Hammer(touchScreen).on("tap", function(event) {
-			alert('hello!');
-		  });
+	
 		
 		
 		
-		
+		$(touchScreen).hammer().bind("tap", function(event) {
+        score+=10;
+		});
 		
 		
 		

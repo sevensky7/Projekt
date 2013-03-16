@@ -178,22 +178,19 @@
 		
 		
 		
-		
+		/*
 		
 			  
 		  $(touchScreen).bind("touchstart", function(event) {
-		  event.stopPropagation();
-		  event.preventDefault();
+		  return false;
 		  });
 		  
 		  $(touchScreen).bind("touchend", function(event) {
-		  event.stopPropagation();
-		  event.preventDefault();
+		  return false;
 		  });
 		  
 		   $(touchScreen).bind("touchmove", function(event) {
-		    event.stopPropagation();
-		    event.preventDefault();
+		   return false;
 		  });
 		
 	
@@ -205,7 +202,7 @@
 		});
 		
 		
-		
+		*/
 		
 		
 		
@@ -215,10 +212,8 @@
 		
 		
 
-		  /*
+		  
 		  $(touchScreen).bind("touchstart", function(event) {
-		  event.stopPropagation();
-		  event.preventDefault();
 			detect = true;
 			if (localStorage.getItem(2) == 0){
 						$(zombie_gameplay).css('background-image', 'url(img/zombie2.png)');
@@ -226,7 +221,7 @@
 			if (localStorage.getItem(2) == 1){
 						$(zombie_gameplay).css('background-image', 'url(img/zombie4.png)');
 				}
-			
+			return false;
 		  });
 		  
 		  $(touchScreen).bind("touchend", function(event) {
@@ -237,19 +232,10 @@
 			if (localStorage.getItem(2) == 1){
 						$(zombie_gameplay).css('background-image', 'url(img/zombie3.png)');
 				}
-		  event.preventDefault();
+		  return false;
 		  });
 		  
 		   $(touchScreen).bind("touchmove", function(event) {
-		    event.stopPropagation();
-		    event.preventDefault();
-
-			if (localStorage.getItem(2) == 0){
-						$(zombie_gameplay).css('background-image', 'url(img/zombie2.png)');
-				}
-			if (localStorage.getItem(2) == 1){
-						$(zombie_gameplay).css('background-image', 'url(img/zombie4.png)');
-				}
 			
 			var touch = event.originalEvent.touches[0] || event.originalEvent.changedTouches[0];
 	
@@ -259,8 +245,9 @@
 			zombie_mouth.y=mouseY;
 			$(zombie_gameplay).css('top', touch.pageY - scaledHeight/2.1);
 			}
+			return false;
 		  });
-		  */
+		  
 		  
 		  
 		});

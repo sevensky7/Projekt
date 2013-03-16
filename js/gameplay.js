@@ -174,51 +174,7 @@
 		  
 		
 
-		  
-		  $(touchScreen).bind("touchstart", function(event) {
-		  event.stopPropagation();
-		  event.preventDefault();
-			detect = true;
-			if (localStorage.getItem(2) == 0){
-						$(zombie_gameplay).css('background-image', 'url(img/zombie2.png)');
-				}
-			if (localStorage.getItem(2) == 1){
-						$(zombie_gameplay).css('background-image', 'url(img/zombie4.png)');
-				}
-			
-		  });
-		  
-		  $(touchScreen).bind("touchend", function(event) {
-		    detect = false;
-		  if (localStorage.getItem(2) == 0){
-						$(zombie_gameplay).css('background-image', 'url(img/zombie1.png)');
-				}
-			if (localStorage.getItem(2) == 1){
-						$(zombie_gameplay).css('background-image', 'url(img/zombie3.png)');
-				}
-		  event.preventDefault();
-		  });
-		  
-		   $(touchScreen).bind("touchmove", function(event) {
-		    event.stopPropagation();
-		    event.preventDefault();
-
-			if (localStorage.getItem(2) == 0){
-						$(zombie_gameplay).css('background-image', 'url(img/zombie2.png)');
-				}
-			if (localStorage.getItem(2) == 1){
-						$(zombie_gameplay).css('background-image', 'url(img/zombie4.png)');
-				}
-			
-			var touch = event.originalEvent.touches[0] || event.originalEvent.changedTouches[0];
 	
-			mouseY = Math.floor(touch.pageY * realHeight);
-			
-			if ((detect == true) && (mouseY > 40) && (mouseY < 160)){
-			zombie_mouth.y=mouseY;
-			$(zombie_gameplay).css('top', touch.pageY - scaledHeight/2.1);
-			}
-		  });
 		  
 		  
 		  
@@ -342,13 +298,7 @@
           return I;
         };
 		
-		
-		
-		
-		
-		
-		
-		
+
 		
 		var brainsfresh = [];
         
@@ -367,8 +317,8 @@
 
           F.yVelocity = 0;
         
-          F.width = 44;
-          F.height = 44;
+          F.width = 50;
+          F.height = 38;
         
           F.inBounds = function() {
             return F.x >= 0 && F.x <= canvas_width &&
@@ -407,13 +357,6 @@
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
 		var candies = [];
         
         function Candy(C) {
@@ -436,19 +379,19 @@
             return C.x >= 0 && C.x <= canvas_width &&
               C.y >= 0 && C.y <= canvas_height;
           };
-			/*
+			
 		  which_sprite = Math.floor(Math.random() * 2) + 1;
 		  
 		  if (which_sprite==1){
-          C.sprite = Sprite("candy2");
+          C.sprite = "./img/candy.png";
 		  }
 		  else{
-		  C.sprite = Sprite("candy");
+		  C.sprite = "./img/candy2.png";
 		  }
-        */
+        
           C.draw = function() {
             $(canvasElement).drawImage({
-			  source: "./img/candy.png",
+			  source: this.sprite,
 			  x: this.x, y: this.y,
 			  width:this.width, height: this.height
 			});

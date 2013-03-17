@@ -282,7 +282,7 @@
 		
 		
 		  
-		  $(document).bind("touchstart", function(event) {
+		  $(touchScreen).bind("touchstart", function(event) {
 		  return false;
 		  });
 

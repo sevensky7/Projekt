@@ -44,6 +44,7 @@
 		
 		var mouseY = 0;
 		
+		var touches = [];
 		
 		
 		var scaledHeight = $(window).height();
@@ -193,14 +194,32 @@
 	
 		function onPointerDown(e) {
 		    pointers = e.getPointerList();
-			score+=10;
-			score_update();
+			detect = true;
+			if (localStorage.getItem(2) == 0){
+						$(zombie_gameplay).css('background-image', 'url(img/zombie2.png)');
+				}
+			if (localStorage.getItem(2) == 1){
+						$(zombie_gameplay).css('background-image', 'url(img/zombie4.png)');
+				}
 		}
 
 		function onPointerMove(e) {
 		  // Prevent the browser from doing its default thing (scroll, zoom)
 		  pointers = e.getPointerList();
+		
+		  
+		    for(var i = 0; i<pointers.length; i++){
+			var pointer =pointers[i]; 
+			 mouseY = Math.floor(pointer.clientY* realHeight);
+			if ((detect == true) && (mouseY > 40) && (mouseY < 160)){
+			zombie_mouth.y=mouseY;
+			$(zombie_gameplay).css('top', pointer.clientY - scaledHeight/2.1);
+			}
+			
+				
+		  }
 
+		  
 		  
 		  }
 
@@ -208,8 +227,13 @@
 
 		function onPointerUp(e) {
 		  pointers = e.getPointerList();
-	
-	
+		  detect = false;
+		  if (localStorage.getItem(2) == 0){
+						$(zombie_gameplay).css('background-image', 'url(img/zombie1.png)');
+				}
+			if (localStorage.getItem(2) == 1){
+						$(zombie_gameplay).css('background-image', 'url(img/zombie3.png)');
+				}
 		}
 		
 		
@@ -413,7 +437,8 @@
           I = I || {};
         
           I.active = true;
-      //    I.age = Math.floor(Math.random() * 32);     
+          I.age = Math.floor(Math.random() * 32);
+          
           I.color = "#A2B";
     
           I.x = 400;
@@ -445,9 +470,9 @@
             I.x += I.xVelocity;
             I.y += I.yVelocity;
         
-            I.yVelocity = -2.5 * Math.sin(Math.PI / 50);
+            I.yVelocity = -2.5 * Math.sin(I.age * Math.PI / 50);
         
-         //   I.age++;
+            I.age++;
         
             I.active = I.active && I.inBounds();
           };
@@ -469,7 +494,7 @@
           F = F || {};
         
           F.active = true;
-         // F.age = Math.floor(Math.random() * 32);
+          F.age = Math.floor(Math.random() * 32);
           
           F.color = "#A2B";
     
@@ -502,9 +527,9 @@
             F.x += F.xVelocity;
             F.y += F.yVelocity;
         
-            F.yVelocity = -2.3 * Math.sin(Math.PI / 50);
+            F.yVelocity = -2.3 * Math.sin(F.age * Math.PI / 50);
         
-        //    F.age++;
+            F.age++;
         
             F.active = F.active && F.inBounds();
           };
@@ -526,7 +551,7 @@
           C = C || {};
         
           C.active = true;
-      //    C.age = Math.floor(Math.random() * 32);
+          C.age = Math.floor(Math.random() * 32);
           
           C.color = "#A2B";
         
@@ -564,9 +589,9 @@
             C.x += C.xVelocity;
             C.y += C.yVelocity;
         
-			C.yVelocity = -1.7 * Math.sin(Math.PI / 60);
+			C.yVelocity = -1.7 * Math.sin(C.age * Math.PI / 60);
         
-      //      C.age++;
+            C.age++;
         
             C.active = C.active && C.inBounds();
           };
@@ -745,17 +770,19 @@
 		
         }
         
+        
+        zombie_mouth.midpoint = function() {
+          return {
+            x: this.x + this.width/2,
+            y: this.y + this.height/2
+          };
+        };
 		
-		function clearCanvas(context, canvas) {
-		  context.clearRect(0, 0, canvas.width, canvas.height);
-		  var w = canvas.width;
-		  canvas.width = 1;
-		  canvas.width = w;
-		}
+		
 
 		
         function draw() {
-          clearCanvas(canvas,canvasElement);
+          canvas.clearRect(0, 0, canvas_width, canvas_height);
 		  score_update();
 		  
 		  

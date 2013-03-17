@@ -197,11 +197,16 @@
 		
 		*/
 		
+		var hammer = new Hammer(document.getElementById("touch_screen"));
 		
-		$(touchScreen).hammer().bind("tap", function(event) {
-        score+=10;
-		});
+		hammer.ontouch = function(ev) { 
 		
+		score+=10;
+		score_update();
+		
+		
+		};
+	
 		
 		
 		

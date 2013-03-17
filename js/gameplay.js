@@ -175,55 +175,12 @@
 		
 		
 		
-		
-		
-		function startup() {
-		  touchScreen.addEventListener("touchstart", handleStart, false);
-		  touchScreen.addEventListener("touchend", handleEnd, false);
-		  touchScreen.addEventListener("touchcancel", handleCancel, false);
-		  touchScreen.addEventListener("touchleave", handleLeave, false);
-		  touchScreen.addEventListener("touchmove", handleMove, false);
-		}
-		
-		function handleStart(evt) {
-		evt.preventDefault();
-		detect = true;
-			if (localStorage.getItem(2) == 0){
-						$(zombie_gameplay).css('background-image', 'url(img/zombie2.png)');
-				}
-			if (localStorage.getItem(2) == 1){
-						$(zombie_gameplay).css('background-image', 'url(img/zombie4.png)');
-				}
-		}
-		
-		
-		function handleEnd(evt){
-		evt.preventDefault();
-		detect = false;
-		  if (localStorage.getItem(2) == 0){
-						$(zombie_gameplay).css('background-image', 'url(img/zombie1.png)');
-				}
-			if (localStorage.getItem(2) == 1){
-						$(zombie_gameplay).css('background-image', 'url(img/zombie3.png)');
-				}
-		
-		}
-		
-		function handleMove(evt){
-		var touch = event.originalEvent.touches[0] || event.originalEvent.changedTouches[0];
 	
-			mouseY = Math.floor(touch.pageY * realHeight);
-			
-			if ((detect == true) && (mouseY > 40) && (mouseY < 160)){
-			zombie_mouth.y=mouseY;
-			$(zombie_gameplay).css('top', touch.pageY - scaledHeight/2.1);
-			}
-		}
 		
 		
 		
 		
-			/*  
+		  
 		  $(touchScreen).bind("touchstart", function(event) {
 		  return false;
 		  });
@@ -237,7 +194,7 @@
 		  });
 		
 	
-		
+		/*
 		
 		
 		var hammer = new Hammer(document.getElementById("touch_screen"));
@@ -250,8 +207,8 @@
 		
 		};
 	
-		*/
 		
+		*/
 		
 		
 		

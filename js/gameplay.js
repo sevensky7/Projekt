@@ -413,8 +413,7 @@
           I = I || {};
         
           I.active = true;
-          I.age = Math.floor(Math.random() * 32);
-          
+      //    I.age = Math.floor(Math.random() * 32);     
           I.color = "#A2B";
     
           I.x = 400;
@@ -446,9 +445,9 @@
             I.x += I.xVelocity;
             I.y += I.yVelocity;
         
-            I.yVelocity = -2.5 * Math.sin(I.age * Math.PI / 50);
+            I.yVelocity = -2.5 * Math.sin(Math.PI / 50);
         
-            I.age++;
+         //   I.age++;
         
             I.active = I.active && I.inBounds();
           };
@@ -470,7 +469,7 @@
           F = F || {};
         
           F.active = true;
-          F.age = Math.floor(Math.random() * 32);
+         // F.age = Math.floor(Math.random() * 32);
           
           F.color = "#A2B";
     
@@ -503,9 +502,9 @@
             F.x += F.xVelocity;
             F.y += F.yVelocity;
         
-            F.yVelocity = -2.3 * Math.sin(F.age * Math.PI / 50);
+            F.yVelocity = -2.3 * Math.sin(Math.PI / 50);
         
-            F.age++;
+        //    F.age++;
         
             F.active = F.active && F.inBounds();
           };
@@ -527,7 +526,7 @@
           C = C || {};
         
           C.active = true;
-          C.age = Math.floor(Math.random() * 32);
+      //    C.age = Math.floor(Math.random() * 32);
           
           C.color = "#A2B";
         
@@ -565,9 +564,9 @@
             C.x += C.xVelocity;
             C.y += C.yVelocity;
         
-			C.yVelocity = -1.7 * Math.sin(C.age * Math.PI / 60);
+			C.yVelocity = -1.7 * Math.sin(Math.PI / 60);
         
-            C.age++;
+      //      C.age++;
         
             C.active = C.active && C.inBounds();
           };
@@ -746,13 +745,6 @@
 		
         }
         
-        
-        zombie_mouth.midpoint = function() {
-          return {
-            x: this.x + this.width/2,
-            y: this.y + this.height/2
-          };
-        };
 		
 		
 

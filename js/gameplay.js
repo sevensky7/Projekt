@@ -137,9 +137,45 @@
 		
 		
 	
+	
+	
+	  touchScreen.addEventListener( 'pointerdown', onPointerDown, false );
+	  touchScreen.addEventListener( 'pointermove', onPointerMove, false );
+	  touchScreen.addEventListener( 'pointerup', onPointerUp, false );
+	
+	
+		function onPointerDown(e) {
+		    pointers = e.getPointerList();
+			score+=10;
+			score_update();
+		}
+
+		function onPointerMove(e) {
+		  // Prevent the browser from doing its default thing (scroll, zoom)
+		  pointers = e.getPointerList();
+
+		  
+		  }
+
+
+		}
+
+		function onPointerUp(e) {
+		  pointers = e.getPointerList();
+	
+	
+		}
+		
+		
+	
+	
+	
+	
+	
 		
 		$(function movements() {
-		  
+		
+		  /*
 		  $(touchScreen).bind("mousedown", function(event) {
 			detect = true;
 			if (localStorage.getItem(2) == 0){
@@ -197,7 +233,7 @@
 		   return false;
 		  });
 		
-	
+	*/
 		/*
 		
 		

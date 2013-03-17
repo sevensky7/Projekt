@@ -1,15 +1,12 @@
 	    var canvasElement = document.getElementById("canvas");
-		var canvas = canvasElement.getContext("2d");
-		
-		var touchScreen=document.getElementById("touch_screen");
-	  
+		var canvas = canvasElement.getContext("2d");	
+		var touchScreen=document.getElementById("touch_screen");  
         var canvas_width = canvasElement.width;
         var canvas_height = canvasElement.height;
 		
 		var nom = document.getElementById("nom");
 		var brainPassed = document.getElementById("bump");
-		
-		
+
 		var paused = document.getElementById("button_pause");
 		var right = document.getElementById("button_right");
 		var left = document.getElementById("button_left");
@@ -162,7 +159,7 @@
 		}
 
 		function onPointerMove(e) {
-		  // Prevent the browser from doing its default thing (scroll, zoom)
+
 		  e.preventDefault();
 		  pointers = e.getPointerList();
 		
@@ -438,17 +435,13 @@
             I.x += I.xVelocity;
             I.y += I.yVelocity;
         
-            I.yVelocity = -2.5 * Math.sin(I.age * Math.PI / 50);
-        
-            I.age++;
-        
+            I.yVelocity = -2.5 * Math.sin(I.age * Math.PI / 50); 
+            I.age++;  
             I.active = I.active && I.inBounds();
           };
         
-          I.explode = function() {
-           
+          I.destroy = function() {
             this.active = false;
-    
           };
         
           return I;
@@ -502,7 +495,7 @@
             F.active = F.active && F.inBounds();
           };
         
-          F.explode = function() {
+          F.destroy = function() {
            
             this.active = false;
     
@@ -564,7 +557,7 @@
             C.active = C.active && C.inBounds();
           };
         
-          C.explode = function() {
+          C.destroy = function() {
             this.active = false;
           };
 		  
@@ -604,13 +597,7 @@
 				requestAnimFrame(animloop);
 			})();
 		
-	
-		   
-		   
-		   
 
-		   
-     
 		
 		
         function update() {
@@ -737,23 +724,15 @@
 	
 		
         }
-        
-        
-        zombie_mouth.midpoint = function() {
-          return {
-            x: this.x + this.width/2,
-            y: this.y + this.height/2
-          };
-        };
+      
 		
 		
 
 		
         function draw() {
+
           canvas.clearRect(0, 0, canvas_width, canvas_height);
 		  score_update();
-		  
-		  
 		  
           brains.forEach(function(brain) {
             brain.draw();
@@ -768,7 +747,6 @@
           });
 		  
 		  zombie_mouth.draw();
-
         }
         
 		
@@ -790,15 +768,15 @@
           brains.forEach(function(brain) {
             if((collides(brain, zombie_mouth)) && (detect==true) ){
 			  score+=10;
-              brain.explode();
-              zombie_mouth.explode();
+              brain.destroy();
+              zombie_mouth.destroy();
 			  comboCounter+=1;
             }
 			if(collides(brain, wall)){
 			  if (score > 10){
 			  score-=10;
 			  comboCounter=0;
-              wall.explode();
+              wall.destroy();
 			  }
             }
           });
@@ -807,8 +785,8 @@
 		   brainsfresh.forEach(function(brainfresh) {
             if((collides(brainfresh, zombie_mouth)) && (detect==true) ){
 			  score+=100;
-              brainfresh.explode();
-              zombie_mouth.explode();
+              brainfresh.destroy();
+              zombie_mouth.destroy();
 			  comboCounter+=1;
 				candies.forEach(function(candy) {
 				candy.xVelocity = 5;
@@ -820,7 +798,7 @@
 			  if (score > 100){
 			  score-=100;
 			  comboCounter=0;
-              wall.explode();
+              wall.destroy();
 			  }
             }
           });
@@ -829,32 +807,23 @@
 		  candies.forEach(function(candy) {
             if((collides(candy, zombie_mouth)) && (detect==true) ){
 			  score-=10;
-			  candy.explode();
+			  candy.destroy();
 			  zombie_mouth.candy();
 			  comboCounter=0;
-				/*    $(zombie).animate(
-            {"left": "+=150px"},
-            "fast");
-			  zombie_mouth.x+=15; */
             }
 			else if (collides(candy, zombie_mouth)){
-			candy.bump();
+				candy.bump();
 			}
 			if(collides(candy, wall)){
-			  candy.explode();
+				candy.destroy();
 			  }
             
 			
           });
 		  
-		  
-		  
-		  
-		  
-
         }
         
-        zombie_mouth.explode = function() {
+        zombie_mouth.destroy = function() {
           this.active = false;
 		  $(nom).fadeIn();
           $(nom).css('visibility', 'visible');
@@ -862,7 +831,7 @@
 		  $(nom).css('visibility', 'false');
         };
 		
-		wall.explode = function() {
+		wall.destroy = function() {
           this.active = false;
 		  $(brainPassed).fadeIn();
           $(brainPassed).css('visibility', 'visible');
@@ -872,47 +841,40 @@
 
 		
 		 zombie_mouth.candy = function() {
-		
-		  this.active = false;
-		  if (lifes == 3){
-		  $(x1).fadeIn();
-          $(x1).css('visibility', 'visible');
-		  lifes-=1;
-		  }
-		  else if (lifes ==2){
-		  $(x2).fadeIn();
-          $(x2).css('visibility', 'visible');
-		  lifes-=1;
-		  }
-		  else if (lifes ==1){
-		  $(x3).fadeIn();
-          $(x3).css('visibility', 'visible');
-		  isPaused=1;
-		  $(started).fadeToggle();
-	      lifes=3;
-		  
-		  //if (bestScore < score){
-		 // bestScore = score;
-		//  }
-		
-		  if (score > best_score){
-		  localStorage.setItem (1, score + 10);
-		  best_Score = localStorage.getItem (1, score +10);
-		  }
-		  
-		  
-		  score=0;
-		  $(x1).fadeToggle();
-		  $(x2).fadeToggle();
-		  $(x3).fadeToggle();
-		  $(play).hide();
-		  $(exit).hide();
-		  $(zombie_gameplay).toggleClass("paused"); 	
-		  
-		  }
-		 
-			
-			
+			  this.active = false;
+			  
+			  if (lifes == 3){
+				  $(x1).fadeIn();
+				  $(x1).css('visibility', 'visible');
+				  lifes-=1;
+			  }
+			  else if (lifes ==2){
+				  $(x2).fadeIn();
+				  $(x2).css('visibility', 'visible');
+				  lifes-=1;
+			  }
+			  else if (lifes ==1){
+				  $(x3).fadeIn();
+				  $(x3).css('visibility', 'visible');
+				  isPaused=1;
+				  $(started).fadeToggle();
+				  lifes=3;
+				  
+				  if (score > best_score){
+				  localStorage.setItem (1, score + 10);
+				  best_Score = localStorage.getItem (1, score +10);
+				  }
+				  
+				  
+				  score=0;
+				  $(x1).fadeToggle();
+				  $(x2).fadeToggle();
+				  $(x3).fadeToggle();
+				  $(play).hide();
+				  $(exit).hide();
+				  $(zombie_gameplay).toggleClass("paused"); 			  
+			  }
+
 		  };
 		  
 		  

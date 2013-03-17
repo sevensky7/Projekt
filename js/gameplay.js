@@ -158,7 +158,6 @@
 		  }
 
 
-		}
 
 		function onPointerUp(e) {
 		  pointers = e.getPointerList();

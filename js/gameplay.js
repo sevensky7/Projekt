@@ -746,11 +746,16 @@
         }
         
 		
-		
+		function clearCanvas(context, canvas) {
+		  context.clearRect(0, 0, canvas.width, canvas.height);
+		  var w = canvas.width;
+		  canvas.width = 1;
+		  canvas.width = w;
+		}
 
 		
         function draw() {
-          canvasElement.width = canvasElement.width;
+          clearCanvas(canvas,canvasElement);
 		  score_update();
 		  
 		  

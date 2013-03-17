@@ -136,9 +136,56 @@
 		});
 		
 		
+		
+		/*
+		
+		
+		document.body.addEventListener('touchmove',function(event){ event.preventDefault(); },false);
+					function listen(){
+						if(touchScreen){
+							iphone = ((window.navigator.userAgent.match('iPhone'))||(window.navigator.userAgent.match('iPod')))?true:false;
+							ipad = (window.navigator.userAgent.match('iPad'))?true:false;
+							if(iphone||ipad){
+								touchScreen.addEventListener('touchstart', ev_canvas, false);
+								touchScreen.addEventListener('touchend', ev_canvas, false);
+								touchScreen.addEventListener('touchmove', ev_canvas, false);
+							}
+							else{
+								touchScreen.addEventListener('mousedown', ev_canvas, false);
+								touchScreen.addEventListener('mousemove', ev_canvas, false);
+								touchScreen.addEventListener('mouseup',   ev_canvas, false);
+							}
+						}
+					}
+
+
+					// The general-purpose event handler. This function just determines the mouse position relative to the canvas element.
+					function ev_canvas (ev) {
+						iphone = ((window.navigator.userAgent.match('iPhone'))||(window.navigator.userAgent.match('iPod')))?true:false;
+						ipad = (window.navigator.userAgent.match('iPad'))?true:false;
+						if (((iphone)||(ipad))&&(ev.touches[0])){ //iPad
+							ev._x = ev.touches[0].clientX;
+							ev._y = ev.touches[0].clientY;
+						}
+						else if (ev.layerX || ev.layerX == 0) { // Firefox
+							ev._x = ev.layerX;
+							ev._y = ev.layerY;
+						}
+						else if (ev.offsetX || ev.offsetX == 0) { // Opera
+							ev._x = ev.offsetX;
+							ev._y = ev.offsetY;
+						}
+			
+					
+					}
+							
+		
+		*/
+		
+		
 	
 	
-	
+	 
 	  touchScreen.addEventListener( 'pointerdown', onPointerDown, false );
 	  touchScreen.addEventListener( 'pointermove', onPointerMove, false );
 	  touchScreen.addEventListener( 'pointerup', onPointerUp, false );
@@ -168,7 +215,7 @@
 		
 	
 	
-	
+
 	
 	
 		
@@ -711,7 +758,7 @@
 
 		
         function draw() {
-          canvas.clearRect(0, 0, canvas_width, canvas_height);
+          canvasElement.width = canvasElement.width;
 		  score_update();
 		  
 		  

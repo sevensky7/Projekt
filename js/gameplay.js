@@ -177,11 +177,15 @@
 		
 	
 		
-		
+		$(document).bind("touchmove",function(event){
+		return false;
+		});
 		
 		
 		  
 		  $(touchScreen).bind("touchstart", function(event) {
+		  score+=10;
+		score_update();
 		  return false;
 		  });
 		  

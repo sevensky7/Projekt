@@ -571,33 +571,19 @@
      
 		
         
-		
-			 window.requestAnimFrame = (function(){
-				return  window.requestAnimationFrame       || 
-              window.webkitRequestAnimationFrame || 
-              window.mozRequestAnimationFrame    || 
-              window.oRequestAnimationFrame      || 
-              window.msRequestAnimationFrame     || 
-              function( callback ){
-                window.setTimeout(callback, 1000 / 30);
-              };
-			})();
-		
-		   
-		   
-		   
+	
 	
 	
 		
-			(function animloop(){
+			function animloop(){
 				if(isPaused==0) {
 				update();
 				draw();
 				}
 				requestAnimFrame(animloop);
-			})();
+			}
 		
-
+			setInterval(animloop, 1000 / 60);
 		
 		
         function update() {

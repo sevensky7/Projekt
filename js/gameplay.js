@@ -281,7 +281,15 @@
 		*/
 		
 		
-		
+		  
+		  $(document).bind("touchstart", function(event) {
+		  return false;
+		  });
+
+		  
+		   $(document).bind("touchmove", function(event) {
+		   return false;
+		  });
 		
 		
 		

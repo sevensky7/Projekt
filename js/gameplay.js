@@ -159,7 +159,7 @@
 		}
 
 		function onPointerMove(e) {
-
+		  // Prevent the browser from doing its default thing (scroll, zoom)
 		  e.preventDefault();
 		  pointers = e.getPointerList();
 		
@@ -571,19 +571,39 @@
      
 		
         
-	
+		
+			 window.requestAnimFrame = (function(){
+				return  window.requestAnimationFrame       || 
+              window.webkitRequestAnimationFrame || 
+              window.mozRequestAnimationFrame    || 
+              window.oRequestAnimationFrame      || 
+              window.msRequestAnimationFrame     || 
+              function( callback ){
+                window.setTimeout(callback, 1000 / 30);
+              };
+			})();
+		
+		   
+		   
+		   
 	
 	
 		
-			function animloop(){
+			(function animloop(){
 				if(isPaused==0) {
 				update();
 				draw();
 				}
 				requestAnimFrame(animloop);
-			}
+			})();
 		
-			setInterval(animloop, 1000 / 60);
+	
+		   
+		   
+		   
+
+		   
+     
 		
 		
         function update() {
@@ -717,7 +737,17 @@
 		
         function draw() {
 
-          canvas.clearRect(0, 0, canvas_width, canvas_height);
+		 canvas.save();
+
+		// Use the identity matrix while clearing the canvas
+		canvas.setTransform(1, 0, 0, 1, 0, 0);
+		canvas.clearRect(0, 0, canvas_width, canvas_height);
+
+		// Restore the transform
+		canvas.restore();
+		
+		
+        //  canvas.clearRect(0, 0, canvas_width, canvas_height);
 		  score_update();
 		  
           brains.forEach(function(brain) {

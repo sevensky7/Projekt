@@ -784,7 +784,7 @@
           brains.forEach(function(brain) {
             if((collides(brain, zombie_mouth)) && (detect==true) ){
 			  score+=10;
-              brain.destroy();
+              //brain.destroy();
               zombie_mouth.destroy();
 			  comboCounter+=1;
             }
@@ -792,7 +792,7 @@
 			  if (score > 10){
 			  score-=10;
 			  comboCounter=0;
-              wall.destroy();
+             // wall.destroy();
 			  }
             }
           });
@@ -823,7 +823,7 @@
 		  candies.forEach(function(candy) {
             if((collides(candy, zombie_mouth)) && (detect==true) ){
 			  score-=10;
-			  candy.destroy();
+			  //candy.destroy();
 			  zombie_mouth.candy();
 			  comboCounter=0;
             }

@@ -441,7 +441,7 @@
           };
         
           I.destroy = function() {
-            this.active = false;
+            I.active = false;
           };
         
           return I;
@@ -497,7 +497,7 @@
         
           F.destroy = function() {
            
-            this.active = false;
+            F.active = false;
     
           };
         
@@ -558,7 +558,7 @@
           };
         
           C.destroy = function() {
-            this.active = false;
+            C.active = false;
           };
 		  
 		  C.bump = function() {

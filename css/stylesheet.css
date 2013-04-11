@@ -1,16 +1,17 @@
 ﻿body{
-margin:0; 
-padding:0; 
-border:0; 
-background:black; 
-overflow:hidden; 
-width:100%;height:100%;
--webkit-touch-callout: none;
+width:100%;
+height:100%;
+background-color:#e0e0e0;
+
+border: 0 none;
+position:relative;
+user-select: none;
 -webkit-user-select: none;
--khtml-user-select: none;
 -moz-user-select: none;
+-o-user-select: none;
 -ms-user-select: none;
 }
+
 
 #fpsCounter{
 top:1%;
@@ -22,7 +23,6 @@ z-index:150;
 font-family:'londrina';
 color: #fff;
 }
-
 a{
 border: 0 none;
 visibility: hidden;
@@ -70,8 +70,8 @@ border:0;
 .gameplay_screen{
 background-image:url('../img/gameplay_screen.jpg') !important;
 background-size: 100% 100%;
-width:100%; 
-height:100%; 
+position:relative;
+border:0;
 }
 
 .tutorial_screen{
@@ -329,7 +329,8 @@ background-image:url('../img/button_music_on.png');
 background-size:100%;
 background-repeat:no-repeat;
 width:15%;
-height:25%;
+max-height:25%;
+min-height:25%;
 padding-top:10%;
 position:absolute;
 left:60%;
@@ -446,7 +447,7 @@ left:5%;
 top:0%;
 bottom:0%;
 border:0;
-z-index:8;
+z-index:0;
 
 -webkit-animation-name: zombie;
 -webkit-animation-duration: 6s;
@@ -476,18 +477,16 @@ animation-timing-function: linear;
 
 
 
-.ui-page {
--webkit-backface-visibility: hidden; 
- }
+
+.ui-page { -webkit-backface-visibility: hidden; }
 
 canvas{
 position:absolute;
-z-index:15;
+z-index:10;
 display:block;
-height:20%;
-width:20%;
-z-index:8;
-left: 80%;
+height:100%;
+width:100%;
+
 }
 
 
@@ -580,37 +579,7 @@ top:30%;
 position:absolute;
 padding-top:10%;
 border:0;
-z-index:6;
- }
- 
-.wipeout{
-visibility:hidden;
-background-image:url('../img/wipeout.png');
-background-size:100% 100%;
-background-repeat:no-repeat;
-width:100%;
-height:100%;
-left:0%;
-top:0%;
-position:absolute;
-padding-top:10%;
-border:0;
-z-index:6;
- }
- 
- .frenzy{
-visibility:hidden;
-background-image:url('../img/frenzy.png');
-background-size:100% 100%;
-background-repeat:no-repeat;
-width:100%;
-height:100%;
-left:0%;
-top:0%;
-position:absolute;
-padding-top:10%;
-border:0;
-z-index:6;
+z-index:9;
  }
  
 .bump{
@@ -625,7 +594,7 @@ top:10%;
 position:absolute;
 padding-top:10%;
 border:0;
-z-index:10;
+z-index:9;
  }
  
 .x1{
@@ -821,98 +790,4 @@ src: url('../fonts/LondrinaSolid-Regular-webfont.eot?#iefix') format('embedded-o
 url('../fonts/LondrinaSolid-Regular-webfont.woff') format('woff'),
 url('../fonts/LondrinaSolid-Regular-webfont.ttf') format('truetype'),
 url('../fonts/LondrinaSolid-Regular-webfont.svg#svgFontName') format('svg');
-}
-
-div { 
-position:absolute; 
-margin:0; 
-padding:0; 
-border:0; 
-outline:0; 
-}
-
-#playbutton { 
-visibility:visible;
-position:absolute; 
-top:50%; 
-left:50%; 
-margin-left:-137px; 
-margin-top:-25px; 
-width:256px; 
-height:32px; 
-padding:16px; 
-border-radius:16px; 
-border:2px solid black; 
-background:#666666; 
-color:white; 
-text-decoration:none; 
-display:block; 
-font-size:32px; 
-line-height:32px; 
-font-family:arial; 
-font-weight:bold; 
-text-align:center; 
-}
-
-#playbutton:hover {
- background:red; 
-}
-
-#area { 
-width:100%; 
-height:100%; 
-overflow:hidden; 
-top:0%; 
-left:0%; 
-display:block;
-visibility:visible;
-}
-
-#level { 
-width:100%; 
-height:100%; 
-top:0px; 
-left:0px;
-}
-
-
-
-.brain {
-background: url('../img/brain2.png') no-repeat; 
-background-size: 100% 100%; 
-width:13%; 
-height:16%;
-z-index:11;
-}
-
-.special {
-background: url('../img/brainfresh.png') no-repeat; 
-background-size: 100% 100%; 
-width:13%; 
-height:16%;
-z-index:11;
-}
-
-.candy {
-background-size: 100% 100%; 
-width:12%; 
-height:19%;
-z-index:11;
-}
-
-.mouth {
-background-color: black;
-width:2%;
-height:15%;
-left:14%;
-top:45%;
-z-index:10;
-}
-
-
-
-#stats {
-top:5%; 
-left: 85%;
-z-index:0; 
 }

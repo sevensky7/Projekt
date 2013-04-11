@@ -3,20 +3,20 @@
     <head>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-      
+        <meta name="format-detection" content="telephone=no" />
 		<meta name="HandheldFriendly" content="true" />
-		<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">   /-->
-		
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />
 		 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <title>No Candy For My Zombie</title>
         
-		
-		<script src="js/appmobi.js"></script>
-        <script src="js/jquery-1.6.4.min.js"></script>
-        <script src="js/jquery.mobile-1.2.0.min.js"></script>
-		<script src="js/jcanvas.min.js"></script>
+        <script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.2.0.min.js"></script>
+		<script type="text/javascript" src="js/jcanvas.min.js"></script>
+
+		<script type="text/javascript" src="js/pointer.min.js"></script>
 
 		
 		<script src='http://connect.facebook.net/en_US/all.js'></script>
@@ -31,7 +31,7 @@
 	<script type="text/javascript">
 
 	$(document).ready(function() {
-	$(zombie).toggleClass("paused"); 
+	$(zombie_gameplay).toggleClass("paused"); 
 	
 	});
 	
@@ -113,8 +113,10 @@
       <div data-role="page" id="newgame" class="gameplay_screen">
 
         <div data-role="content">
-				 			
-				
+				  <div id="canvas_wrapper">
+				<canvas id="canvas" height="240" width="400">Not supported.</canvas>    
+				<div id="touch_screen"></div> 				
+				<div id="fpsCounter"></div>
 					<div id="overlay_begin">
 						 <div class="pcontainer"><p id="last_score"></p></div>
 						 <a href="#toggle" data-role="button" data-transition="fade" id="button_play"></a>
@@ -126,8 +128,6 @@
 							<p id='msg'></p>
 							<!--
 							<script> 
-							
-							
 							  FB.init({appId: "348482245257820", status: true, cookie: true});
 
 							  function postToFeed() {
@@ -149,40 +149,30 @@
 							  }
 							
 							</script>
-						 -->
+						 //-->
 					</div>
 					
 					  <!--Gameplay Zombie-->
 					
-					<div id='area'>
-						<div id="fpsCounter"></div>
-						<div id="nom" class="nomnom"></div>
-						<div id="wipeout" class="wipeout"></div>
-						<div id="frenzy" class="frenzy"></div>
+						<div class="zombie_g" id="zombie_g"></div>
+					
+						
+						
+						
+						<div class="nomnom" id="nom"></div>
 						<div class="bump" id="bump"></div>
 						<div class="frenzyBar" id="frenzyBar"></div>
 						<div class="x1" id="x1"></div>
 						<div class="x2" id="x2"></div>
 						<div class="x3" id="x3"></div>
-						<canvas id="canvas"></canvas>
-						<div id='background' class="gameplay_screen">
-								<div id='level'>
-											<div id="zombie_dude" class="zombie_g"></div>
-											<div id="stats"></div>
-								</div>
-						</div>
 						<div id="button_pause"></div>
-					</div>						
-
-
 							
 				</div>
 			</div>
-		
+		</div>
       
      <script type="text/javascript">
         $("body").fixedtoolbar({ tapToggle: false });
-		
     </script>
     <script type="text/javascript" src="js/gameplay.js"></script>
     </body>

@@ -5,20 +5,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       
 		<meta name="HandheldFriendly" content="true" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">   /-->
+		
 		 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <title>No Candy For My Zombie</title>
         
 		
-		<script type="text/javascript" src="js/appmobi.js"></script>
-        <script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile-1.2.0.min.js"></script>
-		<script type="text/javascript" src="js/jcanvas.min.js"></script>
-
-
+		<script src="js/appmobi.js"></script>
+        <script src="js/jquery-1.6.4.min.js"></script>
+        <script src="js/jquery.mobile-1.2.0.min.js"></script>
+		<script src="js/jcanvas.min.js"></script>
 
 		
 		<script src='http://connect.facebook.net/en_US/all.js'></script>
@@ -126,8 +124,10 @@
 		 				    
 							<a id="button_share" onclick='postToFeed(); return false;' data-role="button"></a>
 							<p id='msg'></p>
-							<!--
+							
 							<script> 
+							
+							
 							  FB.init({appId: "348482245257820", status: true, cookie: true});
 
 							  function postToFeed() {
@@ -149,12 +149,13 @@
 							  }
 							
 							</script>
-						 //-->
+						 
 					</div>
 					
 					  <!--Gameplay Zombie-->
 					
 					<div id='area'>
+						<div id="fpsCounter"></div>
 						<div id="nom" class="nomnom"></div>
 						<div id="wipeout" class="wipeout"></div>
 						<div id="frenzy" class="frenzy"></div>

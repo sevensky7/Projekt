@@ -1,5 +1,3 @@
-	$(window).load(function() {
-	
 document.addEventListener("appMobi.device.ready",function(){
         //lock the application in portrait orientation
         AppMobi.device.setRotateOrientation("landscape");
@@ -19,6 +17,13 @@ var onDeviceReady=function(){
         };
 
 
+
+
+var t=setTimeout(function(){
+
+
+
+
 // grab the DOM elements we want to manipulate
 var area = document.getElementById('area');
 var level = document.getElementById('level');
@@ -28,6 +33,7 @@ var playbutton = document.getElementById('playbutton');
 var mouth = new Mouth();
 var zombie = document.getElementById('zombie_dude');
 var choose_zombie = document.getElementById("chooseZombie");
+var fpsCounter = document.getElementById("fpsCounter");
 
 //var ua = navigator.userAgent.toLowerCase();
 //var isAndroid = ua.indexOf("android");
@@ -55,9 +61,7 @@ var isMobile = {
     any: function() {
         return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
     }
-};
-
-
+}
 
 
 
@@ -68,15 +72,28 @@ var viewportH =  $('[data-role="page"]').first().height();
 var scaledHeight = $('[data-role="page"]').first().height();
 var scaledWidth = $('[data-role="page"]').first().width();
 }
-else{
-var viewportW =  screen.availWidth;
-var viewportH =  screen.availHeight;
-var scaledWidth = screen.availWidth;
-var scaledHeight = screen.availHeight;
+else{ 
+//$(window).bind("load", function() {
+var viewportW =  screen.width;
+var viewportH =  screen.height;
+var scaledWidth = screen.width;
+var scaledHeight = screen.height;
 }
+  
+
+//var viewportW =  document.body.clientWidth;
+//var viewportH =  $(document).height(); 
 
 
-alert (viewportW + "  " + viewportH);
+//var w=window,d=document,e=d.documentElement,g=d.getElementsByTagName('body')[0];
+
+//var viewportW = w.innerWidth||e.clientWidth||g.clientWidth;
+
+//var viewportH = w.innerHeight||e.clientHeight||g.clientHeight;
+//var scaledWidth = w.innerWidth||e.clientWidth||g.clientWidth;
+//var scaledHeight =w.innerHeight||e.clientHeight||g.clientHeight;
+
+//alert (viewportW + "  " + viewportH);
 
 
 var canvasElement = document.getElementById('canvas');
@@ -291,7 +308,7 @@ $(area).bind("touchend", function(event) {
 
 		  });
 
-
+//alert(best_score);
 //---------------------------------------------VISUAL OF ZOMBIE
 
 	if (localStorage.getItem(1) === null) {
@@ -402,7 +419,7 @@ if (j< candies.length) {
 							  
 							  if (score > best_score){
 							  localStorage.setItem (1, score + 10);
-							  best_Score = localStorage.getItem (1, score +10);
+							  best_score = localStorage.getItem (1, score +10);
 							  }
 							  
 							  
@@ -875,10 +892,15 @@ function difficulty()
 
 
 
-
+var lastLoop = new Date;
+var fps = 0;
 // run each frame
 (function animate() 
 {
+var thisLoop = new Date;
+fps = 1000 / (thisLoop - lastLoop);
+lastLoop = thisLoop;
+
 requestAnimationFrame(animate);
 if (isPaused == 0){
 	// call this function again asap
@@ -893,9 +915,21 @@ if (isPaused == 0){
 	mouth.reposition();
 	score_update();
 	difficulty();
+
 	//$(last_score).html("Score: " + score + "<br />" + "Best Score: " + localStorage.getItem(1)); 
 }
 })();
+
+
+
+	setInterval(function(){
+	 $(fpsCounter).html("FPS: " + fps.toFixed(1));
+	}, 1000);
+
+
+
+
+
 
 // start your engines!
 function startBenchmark()
@@ -915,10 +949,9 @@ playbutton.style.display="none";
 		   	
 
 	
-});
-	
 			
-      
-        
+},2000);
+         // Do something after 5 seconds
+  
 		
         
